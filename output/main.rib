@@ -1,0 +1,1327 @@
+##RenderMan RIB
+version 3.04999995
+Display "output/render.exr" "openexr" "rgba" 
+Format 800 600 1
+Integrator "PxrPathTracer" "integrator" "int maxIndirectBounces" [12]
+Option "Ri" "int[2] Pixelsamples" [8 8]
+Projection "perspective" "fov" [38]
+Translate 0 0 18
+Rotate -25 1 0 0
+Rotate 20 0 1 0
+WorldBegin 
+Light "PxrDomeLight" "domeLight" "float intensity" [0.800000012] "color lightColor" [1 0.949999988 0.850000024]
+AttributeBegin 
+Translate -6 8 4
+Rotate -40 1 0 0
+Light "PxrRectLight" "keyLight" "float intensity" [12] "float sceneUnits" [1] "color lightColor" [1 0.970000029 0.899999976]
+AttributeEnd 
+AttributeBegin 
+Translate 5 4 -3
+Rotate -20 1 0 0
+Light "PxrRectLight" "fillLight" "float intensity" [3] "float[2] sides" [3 3] "color lightColor" [0.850000024 0.899999976 1]
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrDiffuse" "ground_material" "color diffuseColor" [0.449999988 0.280000001 0.119999997]
+Patch "bilinear" "P" [-20 -2.5 -20 20 -2.5 -20 -20 -2.5 20 20 -2.5 20]
+AttributeEnd 
+AttributeBegin 
+Attribute "identifier" "string name" ["jar"]
+Bxdf "PxrSurface" "glass_placeholder" "color diffuseColor" [0 0 0] "float diffuseGain" [0] "color refractionColor" [0.819999993 0.930000007 0.850000024] "float refractionGain" [1] "float glassRoughness" [0.0199999996] "float glassIor" [1.51999998]
+TransformBegin 
+Translate 0 -2.5 0
+Rotate -90 1 0 0
+Hyperboloid 1.79999995 0 0 2 0 0.5 360 
+TransformEnd 
+TransformBegin 
+Translate 0 -2 0
+Rotate -90 1 0 0
+Hyperboloid 2 0 0 2.1500001 0 0.899999976 360 
+TransformEnd 
+TransformBegin 
+Translate 0 -1.10000002 0
+Rotate -90 1 0 0
+Hyperboloid 2.1500001 0 0 2.1500001 0 0.800000012 360 
+TransformEnd 
+TransformBegin 
+Translate 0 -0.300000012 0
+Rotate -90 1 0 0
+Hyperboloid 2.1500001 0 0 2.04999995 0 0.800000012 360 
+TransformEnd 
+TransformBegin 
+Translate 0 0.5 0
+Rotate -90 1 0 0
+Hyperboloid 2.04999995 0 0 1.85000002 0 0.600000024 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.10000002 0
+Rotate -90 1 0 0
+Hyperboloid 1.85000002 0 0 1.89999998 0 0.300000012 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.39999998 0
+Rotate -90 1 0 0
+Hyperboloid 1.89999998 0 0 1.89999998 0 0.400000006 360 
+TransformEnd 
+TransformBegin 
+Translate 0 -2.11999989 0
+Rotate -90 1 0 0
+Hyperboloid 1.5 0 0 1.70000005 0 0.119999997 360 
+TransformEnd 
+TransformBegin 
+Translate 0 -2 0
+Rotate -90 1 0 0
+Hyperboloid 1.70000005 0 0 1.85000002 0 0.899999976 360 
+TransformEnd 
+TransformBegin 
+Translate 0 -1.10000002 0
+Rotate -90 1 0 0
+Hyperboloid 1.85000002 0 0 1.85000002 0 0.800000012 360 
+TransformEnd 
+TransformBegin 
+Translate 0 -0.300000012 0
+Rotate -90 1 0 0
+Hyperboloid 1.85000002 0 0 1.75 0 0.800000012 360 
+TransformEnd 
+TransformBegin 
+Translate 0 0.5 0
+Rotate -90 1 0 0
+Hyperboloid 1.75 0 0 1.54999995 0 0.600000024 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.10000002 0
+Rotate -90 1 0 0
+Hyperboloid 1.54999995 0 0 1.60000002 0 0.300000012 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.39999998 0
+Rotate -90 1 0 0
+Hyperboloid 1.60000002 0 0 1.60000002 0 0.400000006 360 
+TransformEnd 
+TransformBegin 
+Translate 0 -2.5 0
+Rotate 90 1 0 0
+Disk 0 1.79999995 360 
+TransformEnd 
+TransformBegin 
+Translate 0 -2.11999989 0
+Rotate -90 1 0 0
+Disk 0 1.5 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.79999995 0
+Rotate -90 1 0 0
+Disk 0 1.89999998 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.79999995 0
+Rotate 90 1 0 0
+Disk 0 1.60000002 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Translate -1.56312573 -1.87517118 -0.054178264
+Rotate 11.4537926 0 0 1
+Rotate 168.128876 0 1 0
+Rotate -5.34949636 1 0 0
+Scale 0.458723783 0.229361892 0.321106642
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.74898237 -1.83570123 -1.15587354
+Rotate 10.920414 0 0 1
+Rotate 200.076599 0 1 0
+Rotate 34.6795883 1 0 0
+Scale 0.488070667 0.244035333 0.341649473
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.906300783 -1.86406147 -0.609576106
+Rotate -22.141737 0 0 1
+Rotate 269.27121 0 1 0
+Rotate 2.95366406 1 0 0
+Scale 0.537183821 0.268591911 0.376028687
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.798955619 -1.89569259 0.000498817011
+Rotate -15.7087517 0 0 1
+Rotate 28.8401279 0 1 0
+Rotate 32.2545242 1 0 0
+Scale 0.526744783 0.263372391 0.368721366
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.796241224 -1.89850855 0.60466218
+Rotate 4.72595787 0 0 1
+Rotate 88.6375275 0 1 0
+Rotate 27.3201122 1 0 0
+Scale 0.471168339 0.23558417 0.329817832
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.790154636 -1.86829126 1.1338644
+Rotate 10.8095903 0 0 1
+Rotate 73.5333099 0 1 0
+Rotate 30.4294376 1 0 0
+Scale 0.502530515 0.251265258 0.351771355
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.0792760327 -1.83708024 -1.18310869
+Rotate -19.648201 0 0 1
+Rotate 41.5543213 0 1 0
+Rotate -25.5996227 1 0 0
+Scale 0.509705007 0.254852504 0.356793493
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.0133059099 -1.85367906 -0.61383909
+Rotate -11.8008051 0 0 1
+Rotate 228.325668 0 1 0
+Rotate -20.748188 1 0 0
+Scale 0.504434705 0.252217352 0.353104293
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.00286703696 -1.90057766 0.0709338859
+Rotate -24.8227158 0 0 1
+Rotate 99.6048813 0 1 0
+Rotate -5.34969568 1 0 0
+Scale 0.526149333 0.263074666 0.368304521
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.0677798092 -1.85190773 0.597994864
+Rotate -24.5165157 0 0 1
+Rotate 153.967285 0 1 0
+Rotate 3.61762953 1 0 0
+Scale 0.473575979 0.23678799 0.331503183
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.911015987 -1.84844697 -1.09361887
+Rotate 17.9296627 0 0 1
+Rotate 313.980042 0 1 0
+Rotate -27.4333057 1 0 0
+Scale 0.474012524 0.237006262 0.331808746
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.940287411 -1.89884937 0.580337763
+Rotate 23.1267166 0 0 1
+Rotate 64.2844162 0 1 0
+Rotate 32.9280434 1 0 0
+Scale 0.534531355 0.267265677 0.374171942
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 1.51510143 -1.86400115 -0.0372901
+Rotate -2.89200997 0 0 1
+Rotate 167.395752 0 1 0
+Rotate 10.8293934 1 0 0
+Scale 0.488689929 0.244344965 0.342082947
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -1.18158162 -1.44648254 -0.898061872
+Rotate -9.27414227 0 0 1
+Rotate 163.73732 0 1 0
+Rotate 3.50676274 1 0 0
+Scale 0.535067439 0.26753372 0.374547184
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -1.2741816 -1.46890533 -0.204717666
+Rotate 2.12967968 0 0 1
+Rotate 236.757736 0 1 0
+Rotate 34.1683464 1 0 0
+Scale 0.486375749 0.243187875 0.340463042
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -1.21769512 -1.45513129 0.935842752
+Rotate 5.44358349 0 0 1
+Rotate 350.332855 0 1 0
+Rotate -26.5001736 1 0 0
+Scale 0.489430457 0.244715229 0.342601299
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.337498456 -1.46941972 -1.44988513
+Rotate -10.0722075 0 0 1
+Rotate 101.822037 0 1 0
+Rotate 22.4384632 1 0 0
+Scale 0.534082353 0.267041177 0.373857647
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.38826558 -1.4963553 -0.773692071
+Rotate 2.59587097 0 0 1
+Rotate 124.244621 0 1 0
+Rotate 2.70064044 1 0 0
+Scale 0.494067639 0.24703382 0.345847338
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.341113895 -1.45460796 0.20713827
+Rotate 8.18444157 0 0 1
+Rotate 138.988358 0 1 0
+Rotate 21.798624 1 0 0
+Scale 0.517023444 0.258511722 0.361916423
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.329813123 -1.50472355 0.945143163
+Rotate 18.4850159 0 0 1
+Rotate 212.464951 0 1 0
+Rotate 0.160380512 1 0 0
+Scale 0.494579583 0.247289792 0.346205711
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.484035879 -1.49658227 -0.897160649
+Rotate 14.6259737 0 0 1
+Rotate 203.7341 0 1 0
+Rotate 2.18164229 1 0 0
+Scale 0.48373571 0.241867855 0.338615
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.327495903 -1.46102178 -0.36068055
+Rotate -17.8441143 0 0 1
+Rotate 328.618439 0 1 0
+Rotate -18.1419144 1 0 0
+Scale 0.528375566 0.264187783 0.369862884
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.49632597 -1.47125936 1.38236296
+Rotate 3.74059653 0 0 1
+Rotate 205.892166 0 1 0
+Rotate -18.3956013 1 0 0
+Scale 0.484622389 0.242311195 0.339235663
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 1.26658511 -1.46403193 -0.894436717
+Rotate -10.2444773 0 0 1
+Rotate 32.4480171 0 1 0
+Rotate 16.2651844 1 0 0
+Scale 0.489674091 0.244837046 0.342771858
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 1.29187024 -1.46704447 -0.343762994
+Rotate 20.6743488 0 0 1
+Rotate 191.106857 0 1 0
+Rotate 33.0042725 1 0 0
+Scale 0.461894393 0.230947196 0.323326081
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 1.31261814 -1.4713614 0.244469762
+Rotate -8.06423759 0 0 1
+Rotate 268.761353 0 1 0
+Rotate 21.454195 1 0 0
+Scale 0.524222076 0.262111038 0.366955459
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 1.1337924 -1.43501246 0.94200635
+Rotate 23.9971123 0 0 1
+Rotate 260.718018 0 1 0
+Rotate 25.2098427 1 0 0
+Scale 0.462668121 0.23133406 0.323867679
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.708396673 -1.08128107 -1.19664335
+Rotate 0.100355737 0 0 1
+Rotate 19.1724796 0 1 0
+Rotate -33.1330872 1 0 0
+Scale 0.49060151 0.245300755 0.343421072
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.88605547 -1.1053859 -0.48745805
+Rotate 7.498034 0 0 1
+Rotate 302.103455 0 1 0
+Rotate 30.157814 1 0 0
+Scale 0.483742148 0.241871074 0.3386195
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.832849622 -1.08830571 0.48741895
+Rotate 11.3617392 0 0 1
+Rotate 197.569534 0 1 0
+Rotate 23.4474163 1 0 0
+Scale 0.457130313 0.228565156 0.319991231
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.813057125 -1.08491361 1.07995772
+Rotate 14.6949558 0 0 1
+Rotate 151.137192 0 1 0
+Rotate -31.6575394 1 0 0
+Scale 0.475929141 0.237964571 0.333150387
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.0587967448 -1.06654894 -0.603309214
+Rotate 13.9571295 0 0 1
+Rotate 63.0320854 0 1 0
+Rotate 21.9456215 1 0 0
+Scale 0.453990221 0.226995111 0.317793161
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.00884427503 -1.04663765 0.0341931209
+Rotate -2.11602116 0 0 1
+Rotate 279.428558 0 1 0
+Rotate -30.582962 1 0 0
+Scale 0.506856203 0.253428102 0.35479936
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.0107576745 -1.09316719 1.10482991
+Rotate 18.2899132 0 0 1
+Rotate 281.102966 0 1 0
+Rotate -10.0118074 1 0 0
+Scale 0.517796159 0.258898079 0.362457335
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.867441177 -1.04224718 -1.17397928
+Rotate -11.2722321 0 0 1
+Rotate 359.334229 0 1 0
+Rotate -10.3208485 1 0 0
+Scale 0.453811973 0.226905987 0.317668378
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.940006793 -1.05968654 -0.495616734
+Rotate 8.97053051 0 0 1
+Rotate 288.394562 0 1 0
+Rotate -9.56822109 1 0 0
+Scale 0.456753701 0.22837685 0.3197276
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.786582112 -1.06211793 0.55349952
+Rotate -6.39933109 0 0 1
+Rotate 341.576477 0 1 0
+Rotate 12.5343437 1 0 0
+Scale 0.501052022 0.250526011 0.350736409
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.885771096 -1.07764745 1.16093636
+Rotate -19.32757 0 0 1
+Rotate 89.8601913 0 1 0
+Rotate 10.4692516 1 0 0
+Scale 0.497651398 0.248825699 0.348355979
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 1.54534066 -1.04822206 -0.0523284338
+Rotate -6.55444193 0 0 1
+Rotate 199.447723 0 1 0
+Rotate -33.1601181 1 0 0
+Scale 0.462498933 0.231249467 0.323749244
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -1.16631508 -0.673993886 -0.795701385
+Rotate 3.20843601 0 0 1
+Rotate 28.1169796 0 1 0
+Rotate 14.263629 1 0 0
+Scale 0.457368314 0.228684157 0.320157826
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -1.33956051 -0.664547384 -0.27866137
+Rotate 1.01707709 0 0 1
+Rotate 118.122353 0 1 0
+Rotate -24.510334 1 0 0
+Scale 0.495493829 0.247746915 0.346845686
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -1.22668803 -0.672821641 0.853439748
+Rotate -5.20256472 0 0 1
+Rotate 260.380829 0 1 0
+Rotate 21.4840755 1 0 0
+Scale 0.455196321 0.227598161 0.318637431
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.400174946 -0.694114506 -1.40813148
+Rotate 11.3929071 0 0 1
+Rotate 190.383316 0 1 0
+Rotate 2.60809398 1 0 0
+Scale 0.481299281 0.240649641 0.336909503
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.329159886 -0.686826289 -0.3311854
+Rotate -19.357769 0 0 1
+Rotate 261.008606 0 1 0
+Rotate 30.6187248 1 0 0
+Scale 0.481154382 0.240577191 0.336808056
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.332630455 -0.641218245 0.272867113
+Rotate -19.955164 0 0 1
+Rotate 74.1893845 0 1 0
+Rotate -33.9047928 1 0 0
+Scale 0.5189448 0.2594724 0.363261372
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.52039659 -0.683594942 -1.40501511
+Rotate -6.17699051 0 0 1
+Rotate 53.718338 0 1 0
+Rotate -5.85727549 1 0 0
+Scale 0.520722389 0.260361195 0.364505678
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.425596476 -0.697443068 -0.205137417
+Rotate 7.33529234 0 0 1
+Rotate 73.2012253 0 1 0
+Rotate -17.9999046 1 0 0
+Scale 0.500155807 0.250077903 0.350109071
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.515556514 -0.653156161 0.347748339
+Rotate 8.68359566 0 0 1
+Rotate 96.6461716 0 1 0
+Rotate -21.6662865 1 0 0
+Scale 0.45832175 0.229160875 0.320825219
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.435730517 -0.650372744 0.926383555
+Rotate -1.03028965 0 0 1
+Rotate 201.186172 0 1 0
+Rotate 15.7013664 1 0 0
+Scale 0.466934711 0.233467355 0.326854289
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 1.17019355 -0.676181674 -0.784917295
+Rotate -6.00801134 0 0 1
+Rotate 118.751503 0 1 0
+Rotate -24.3312016 1 0 0
+Scale 0.502122879 0.25106144 0.351485997
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 1.26542366 -0.647876859 0.285354227
+Rotate -0.584183931 0 0 1
+Rotate 259.312866 0 1 0
+Rotate -23.1513996 1 0 0
+Scale 0.465141028 0.232570514 0.325598717
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.762266994 -0.280633301 -1.15527141
+Rotate -14.1085033 0 0 1
+Rotate 192.392807 0 1 0
+Rotate -30.5668526 1 0 0
+Scale 0.509772956 0.254886478 0.356841058
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.837589204 -0.245374233 -0.624426007
+Rotate 3.30710554 0 0 1
+Rotate 208.056107 0 1 0
+Rotate -11.3571396 1 0 0
+Scale 0.474168301 0.23708415 0.331917822
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.8236655 -0.303869307 -0.0273455661
+Rotate -2.02091193 0 0 1
+Rotate 282.200317 0 1 0
+Rotate -28.029768 1 0 0
+Scale 0.511429667 0.255714834 0.358000785
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.913940728 -0.307449311 0.63658905
+Rotate 9.42959404 0 0 1
+Rotate 72.8345566 0 1 0
+Rotate 32.0622253 1 0 0
+Scale 0.489715725 0.244857863 0.342801005
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.912021756 -0.23754558 1.17424953
+Rotate -12.4805365 0 0 1
+Rotate 235.651672 0 1 0
+Rotate -15.8186378 1 0 0
+Scale 0.464307964 0.232153982 0.325015575
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.0892867297 -0.258748472 -0.568661034
+Rotate 6.40400171 0 0 1
+Rotate 260.075531 0 1 0
+Rotate -4.19304037 1 0 0
+Scale 0.450762719 0.225381359 0.315533906
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.0223934799 -0.283912212 0.553705573
+Rotate -20.7875633 0 0 1
+Rotate 99.7083588 0 1 0
+Rotate -25.2118874 1 0 0
+Scale 0.536692381 0.26834619 0.375684679
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.0133491578 -0.249077275 1.16550136
+Rotate 7.92026854 0 0 1
+Rotate 305.24115 0 1 0
+Rotate 13.3333254 1 0 0
+Scale 0.504683375 0.252341688 0.353278369
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.699172378 -0.304512978 -1.22368181
+Rotate 0.330530226 0 0 1
+Rotate 284.144409 0 1 0
+Rotate -30.7671795 1 0 0
+Scale 0.473596662 0.236798331 0.331517667
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.852142692 -0.254864216 -0.573816419
+Rotate 5.80235291 0 0 1
+Rotate 193.16333 0 1 0
+Rotate -29.2300529 1 0 0
+Scale 0.487388879 0.24369444 0.341172218
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.764366925 -0.2922602 -0.0332662947
+Rotate -5.46342468 0 0 1
+Rotate 193.100464 0 1 0
+Rotate 21.5642052 1 0 0
+Scale 0.496017426 0.248008713 0.347212195
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.853573561 -0.302541375 0.632542133
+Rotate 17.3234062 0 0 1
+Rotate 262.785004 0 1 0
+Rotate 13.9073114 1 0 0
+Scale 0.511295021 0.25564751 0.35790652
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -1.14405775 0.129182264 -0.894538164
+Rotate 2.20630145 0 0 1
+Rotate 32.8092766 0 1 0
+Rotate 11.2728043 1 0 0
+Scale 0.485772073 0.242886037 0.340040445
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -1.30877972 0.125933141 -0.219538778
+Rotate -13.6878862 0 0 1
+Rotate 167.420868 0 1 0
+Rotate -16.5692825 1 0 0
+Scale 0.483246148 0.241623074 0.338272303
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -1.11232364 0.155559793 0.87670213
+Rotate 1.7757206 0 0 1
+Rotate 150.70755 0 1 0
+Rotate 22.2883644 1 0 0
+Scale 0.499824166 0.249912083 0.34987691
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.326472968 0.161063045 -1.4773699
+Rotate -5.13225031 0 0 1
+Rotate 139.715698 0 1 0
+Rotate -30.309164 1 0 0
+Scale 0.531972408 0.265986204 0.372380674
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.430101544 0.136595055 -0.301972568
+Rotate 21.2464085 0 0 1
+Rotate 338.273987 0 1 0
+Rotate 18.0864162 1 0 0
+Scale 0.463337988 0.231668994 0.324336588
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.394329071 0.132672518 0.217173323
+Rotate -5.84782648 0 0 1
+Rotate 147.92041 0 1 0
+Rotate -10.9291573 1 0 0
+Scale 0.47574836 0.23787418 0.333023846
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.490992367 0.157539174 -1.39283466
+Rotate -17.0513783 0 0 1
+Rotate 185.497086 0 1 0
+Rotate 22.4712181 1 0 0
+Scale 0.518354416 0.259177208 0.362848073
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.36278078 0.156347156 -0.859810829
+Rotate -15.3618279 0 0 1
+Rotate 10.4213371 0 1 0
+Rotate 26.5532818 1 0 0
+Scale 0.46220848 0.23110424 0.323545933
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.493232489 0.126733646 -0.228029087
+Rotate -11.3011255 0 0 1
+Rotate 253.668213 0 1 0
+Rotate 29.2621746 1 0 0
+Scale 0.472454131 0.236227065 0.330717891
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.32939592 0.11873199 0.925834119
+Rotate 12.4480572 0 0 1
+Rotate 322.01709 0 1 0
+Rotate -23.5540466 1 0 0
+Scale 0.50281924 0.25140962 0.351973444
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 1.20428813 0.142176658 -0.930595398
+Rotate 7.36710596 0 0 1
+Rotate 134.722717 0 1 0
+Rotate 24.0298767 1 0 0
+Scale 0.496036232 0.248018116 0.347225368
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 1.25726247 0.0972877815 -0.322266728
+Rotate 18.0745792 0 0 1
+Rotate 230.614105 0 1 0
+Rotate 34.1852684 1 0 0
+Scale 0.459729403 0.229864702 0.321810573
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 1.17028677 0.114909336 0.32394141
+Rotate 19.9843521 0 0 1
+Rotate 275.57077 0 1 0
+Rotate -24.5049496 1 0 0
+Scale 0.530313671 0.265156835 0.371219546
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -1.55515456 0.549019575 0.0333540998
+Rotate -19.8759995 0 0 1
+Rotate 293.049438 0 1 0
+Rotate -32.7385521 1 0 0
+Scale 0.476562649 0.238281325 0.333593845
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.87145555 0.506523252 -1.20445049
+Rotate -6.14008856 0 0 1
+Rotate 184.984863 0 1 0
+Rotate -22.834341 1 0 0
+Scale 0.511439323 0.255719662 0.35800752
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.837873042 0.536298931 -0.564095259
+Rotate 10.4844646 0 0 1
+Rotate 119.002602 0 1 0
+Rotate -17.1488705 1 0 0
+Scale 0.461705983 0.230852991 0.323194206
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.822362244 0.551302373 0.5867185
+Rotate -15.8065453 0 0 1
+Rotate 79.1863251 0 1 0
+Rotate -12.7498693 1 0 0
+Scale 0.482227713 0.241113856 0.337559402
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.927955866 0.532777667 1.14889956
+Rotate -14.3323097 0 0 1
+Rotate 79.6313095 0 1 0
+Rotate -28.5638103 1 0 0
+Scale 0.487433821 0.24371691 0.34120366
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.0312604904 0.495788872 -1.09500706
+Rotate 0.694734991 0 0 1
+Rotate 69.3044586 0 1 0
+Rotate 27.8797131 1 0 0
+Scale 0.490100116 0.245050058 0.34307009
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.0683955699 0.500294507 0.0638663992
+Rotate 23.8111954 0 0 1
+Rotate 252.987427 0 1 0
+Rotate 2.64279509 1 0 0
+Scale 0.488178849 0.244089425 0.3417252
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.103119776 0.534356296 1.06999695
+Rotate -12.0676022 0 0 1
+Rotate 81.9524307 0 1 0
+Rotate 5.24736071 1 0 0
+Scale 0.521479309 0.260739654 0.365035534
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.792748153 0.564510047 -1.09594023
+Rotate 20.7084465 0 0 1
+Rotate 243.824051 0 1 0
+Rotate -24.9147129 1 0 0
+Scale 0.499115199 0.249557599 0.349380642
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.893754303 0.563709855 -0.533868194
+Rotate -18.8382416 0 0 1
+Rotate 199.825104 0 1 0
+Rotate 3.74669313 1 0 0
+Scale 0.483581752 0.241790876 0.338507235
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.780962884 0.530941427 0.558714509
+Rotate 16.7374191 0 0 1
+Rotate 79.4836655 0 1 0
+Rotate -23.7331944 1 0 0
+Scale 0.508133829 0.254066914 0.355693698
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -1.15518248 0.930185616 -0.864794016
+Rotate -16.2599812 0 0 1
+Rotate 247.081909 0 1 0
+Rotate -7.43981552 1 0 0
+Scale 0.498669118 0.249334559 0.349068373
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -1.11087322 0.9441908 -0.252307206
+Rotate 4.05041075 0 0 1
+Rotate 75.8708572 0 1 0
+Rotate -34.1725998 1 0 0
+Scale 0.491406351 0.245703176 0.343984455
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -1.27364099 0.933642268 0.306736171
+Rotate 5.65420198 0 0 1
+Rotate 169.684326 0 1 0
+Rotate -18.400259 1 0 0
+Scale 0.473373055 0.236686528 0.331361145
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -1.26351893 0.945053458 0.860784769
+Rotate -11.0185232 0 0 1
+Rotate 307.557404 0 1 0
+Rotate -8.93832588 1 0 0
+Scale 0.468947917 0.234473959 0.328263551
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.372717261 0.919133186 0.23004429
+Rotate 11.8263083 0 0 1
+Rotate 175.497742 0 1 0
+Rotate 12.1234989 1 0 0
+Scale 0.52022779 0.260113895 0.364159465
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.312591881 0.939878404 0.84018743
+Rotate 15.3858576 0 0 1
+Rotate 60.3271942 0 1 0
+Rotate -24.8606167 1 0 0
+Scale 0.475787133 0.237893566 0.333050996
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.450652927 0.956167579 1.45797288
+Rotate -13.5891027 0 0 1
+Rotate 58.3198166 0 1 0
+Rotate -30.0059147 1 0 0
+Scale 0.50144738 0.25072369 0.351013154
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.504672766 0.92227596 -1.42652404
+Rotate -11.877387 0 0 1
+Rotate 29.9704323 0 1 0
+Rotate 18.5497456 1 0 0
+Scale 0.452372849 0.226186424 0.316661
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.323818594 0.91570282 -0.833904266
+Rotate 6.32403421 0 0 1
+Rotate 102.303101 0 1 0
+Rotate -17.6822433 1 0 0
+Scale 0.529692411 0.264846206 0.3707847
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.317819268 0.942266166 -0.227759391
+Rotate -1.19226301 0 0 1
+Rotate 117.072472 0 1 0
+Rotate 25.2258167 1 0 0
+Scale 0.452571422 0.226285711 0.316799998
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.528745413 0.925863385 0.294102222
+Rotate -16.1481686 0 0 1
+Rotate 251.144241 0 1 0
+Rotate 32.8679581 1 0 0
+Scale 0.474517286 0.237258643 0.332162112
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.434396058 0.934798837 0.883933306
+Rotate -9.51693344 0 0 1
+Rotate 230.230164 0 1 0
+Rotate 1.64218628 1 0 0
+Scale 0.507226586 0.253613293 0.35505861
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.371792078 0.92563951 1.44194198
+Rotate -9.82135391 0 0 1
+Rotate 93.5305328 0 1 0
+Rotate -9.39516735 1 0 0
+Scale 0.522423685 0.261211842 0.365696579
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 1.16489041 0.953068137 -0.814705789
+Rotate 12.1463442 0 0 1
+Rotate 102.483665 0 1 0
+Rotate 12.9248199 1 0 0
+Scale 0.531895876 0.265947938 0.372327119
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.792004585 1.30981839 -1.18879902
+Rotate -7.03693342 0 0 1
+Rotate 247.456039 0 1 0
+Rotate -18.7472229 1 0 0
+Scale 0.501033902 0.250516951 0.350723714
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.772964656 1.33785343 -0.578094602
+Rotate 17.606472 0 0 1
+Rotate 134.625381 0 1 0
+Rotate 14.8413391 1 0 0
+Scale 0.495209217 0.247604609 0.346646458
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.822138608 1.29491723 -0.0634352714
+Rotate -11.5070648 0 0 1
+Rotate 5.40513372 0 1 0
+Rotate 18.5177193 1 0 0
+Scale 0.467393398 0.233696699 0.327175379
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.841738999 1.34933329 0.616414189
+Rotate 24.2813816 0 0 1
+Rotate 333.757141 0 1 0
+Rotate -30.3704567 1 0 0
+Scale 0.53894192 0.26947096 0.377259344
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.0819052532 1.33848512 -1.15476429
+Rotate -17.8880196 0 0 1
+Rotate 186.10907 0 1 0
+Rotate -31.1817341 1 0 0
+Scale 0.488021582 0.244010791 0.341615111
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.0824733749 1.30098784 -0.582452834
+Rotate 9.80570698 0 0 1
+Rotate 337.623291 0 1 0
+Rotate 19.5111809 1 0 0
+Scale 0.515038192 0.257519096 0.360526741
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.0911733285 1.30591595 -0.0151271215
+Rotate -14.9033995 0 0 1
+Rotate 256.54837 0 1 0
+Rotate 6.32208347 1 0 0
+Scale 0.490579724 0.245289862 0.343405813
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.0113291983 1.36053717 0.530264378
+Rotate -18.8227882 0 0 1
+Rotate 258.614899 0 1 0
+Rotate 20.7540359 1 0 0
+Scale 0.512254596 0.256127298 0.358578205
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.0964587629 1.33178627 1.13914478
+Rotate 0.583322585 0 0 1
+Rotate 284.783966 0 1 0
+Rotate -8.11388397 1 0 0
+Scale 0.482664913 0.241332456 0.337865442
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.732064068 1.35653722 0.0268234536
+Rotate -10.0779228 0 0 1
+Rotate 301.685211 0 1 0
+Rotate 11.6897583 1 0 0
+Scale 0.453304887 0.226652443 0.317313433
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.843742251 1.32665038 1.19827878
+Rotate -20.3436852 0 0 1
+Rotate 335.332733 0 1 0
+Rotate 5.52764034 1 0 0
+Scale 0.465967745 0.232983872 0.326177418
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -1.14213872 1.71357286 -0.325876474
+Rotate -19.4225292 0 0 1
+Rotate 5.11308384 0 1 0
+Rotate 25.050087 1 0 0
+Scale 0.461928487 0.230964243 0.323349953
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -1.31134653 1.725999 0.303059787
+Rotate 10.038744 0 0 1
+Rotate 94.0509338 0 1 0
+Rotate 21.5488491 1 0 0
+Scale 0.463602215 0.231801108 0.324521542
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -1.23377037 1.71821356 0.9133901
+Rotate 21.6970921 0 0 1
+Rotate 52.2252922 0 1 0
+Rotate -29.091898 1 0 0
+Scale 0.527581275 0.263790637 0.369306922
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.532034218 1.74338698 -1.36023605
+Rotate -22.9491196 0 0 1
+Rotate 245.835464 0 1 0
+Rotate 32.323391 1 0 0
+Scale 0.490393847 0.245196924 0.343275696
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.305571973 1.72488391 -0.836950779
+Rotate -8.25162983 0 0 1
+Rotate 309.008057 0 1 0
+Rotate 29.2629414 1 0 0
+Scale 0.536056519 0.268028259 0.375239581
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.387818933 1.74427092 0.233612001
+Rotate 8.64009285 0 0 1
+Rotate 197.140518 0 1 0
+Rotate -22.4058342 1 0 0
+Scale 0.480366588 0.240183294 0.336256623
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.327077627 1.70029306 0.775593221
+Rotate -10.8351488 0 0 1
+Rotate 78.9898758 0 1 0
+Rotate -3.7840457 1 0 0
+Scale 0.458792895 0.229396448 0.321155012
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -0.486730129 1.76288795 1.35164762
+Rotate 22.5244484 0 0 1
+Rotate 300.765289 0 1 0
+Rotate 10.9623861 1 0 0
+Scale 0.458274722 0.229137361 0.320792288
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.517146587 1.72940433 -0.267697155
+Rotate -14.0806751 0 0 1
+Rotate 276.73465 0 1 0
+Rotate -24.9289188 1 0 0
+Scale 0.466059804 0.233029902 0.326241851
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.445834547 1.70024657 0.359206617
+Rotate -12.4701824 0 0 1
+Rotate 205.684036 0 1 0
+Rotate -29.8956356 1 0 0
+Scale 0.514386058 0.257193029 0.360070229
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 0.396470517 1.74052513 0.930389643
+Rotate -11.6781759 0 0 1
+Rotate 239.258102 0 1 0
+Rotate 30.3025608 1 0 0
+Scale 0.463396877 0.231698439 0.324377805
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 1.29662704 1.69544983 -0.835136294
+Rotate 9.79411411 0 0 1
+Rotate 68.7611389 0 1 0
+Rotate -8.10854244 1 0 0
+Scale 0.465895653 0.232947826 0.326126963
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 1.32911515 1.6988647 -0.264142007
+Rotate -18.0028515 0 0 1
+Rotate 264.716705 0 1 0
+Rotate 9.29538918 1 0 0
+Scale 0.482333511 0.241166756 0.337633461
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 1.23848498 1.76718748 0.919493794
+Rotate 14.3889265 0 0 1
+Rotate 20.1796036 0 1 0
+Rotate -32.4070129 1 0 0
+Scale 0.490437657 0.245218828 0.343306363
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -2.96465349 -2.24842048 2.04272652
+Rotate -2.33864832 0 0 1
+Rotate 90.41436 0 1 0
+Rotate 7.7963233 1 0 0
+Scale 0.463410169 0.231705084 0.324387133
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -1.91949201 -2.20066881 -4.38334465
+Rotate -5.66615391 0 0 1
+Rotate 220.757782 0 1 0
+Rotate -2.35082126 1 0 0
+Scale 0.520378292 0.260189146 0.364264786
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 3.43590379 -2.20585632 -2.43097734
+Rotate 6.99934387 0 0 1
+Rotate 237.804443 0 1 0
+Rotate -10.4317036 1 0 0
+Scale 0.479108393 0.239554197 0.335375875
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate -3.29020119 -2.19321537 5.27147579
+Rotate -4.61201572 0 0 1
+Rotate 144.944183 0 1 0
+Rotate -0.928828597 1 0 0
+Scale 0.489653707 0.244826853 0.342757612
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 3.60903525 -2.19514632 0.172920391
+Rotate 2.11018252 0 0 1
+Rotate 324.087219 0 1 0
+Rotate -1.13739955 1 0 0
+Scale 0.524217725 0.262108862 0.366952419
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 4.10697508 -2.19324541 -0.605273128
+Rotate 1.90835047 0 0 1
+Rotate 285.062073 0 1 0
+Rotate -10.1756411 1 0 0
+Scale 0.466186762 0.233093381 0.326330721
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 6.16786432 -2.24727368 -0.66571939
+Rotate 6.39336109 0 0 1
+Rotate 170.541672 0 1 0
+Rotate -14.3008842 1 0 0
+Scale 0.499522477 0.249761239 0.349665731
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+AttributeBegin 
+Translate 3.83056951 -2.24698973 2.14238214
+Rotate 0.468041658 0 0 1
+Rotate 118.69117 0 1 0
+Rotate -14.8299618 1 0 0
+Scale 0.456451416 0.228225708 0.319516003
+Bxdf "PxrDiffuse" "bean_material" "color diffuseColor" [0.180000007 0.0900000036 0.0399999991]
+Sphere 1 -1 1 360 
+AttributeEnd 
+WorldEnd 
