@@ -1,13 +1,12 @@
 ##RenderMan RIB
 version 3.04999995
-Option "searchpath" "string shader" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/RENDERMAN_COFFEE_BEANS/shaders:@"]
 Display "output/render.exr" "openexr" "rgba" 
-Format 1400 600 1
+Format 1400 800 1
 Integrator "PxrPathTracer" "integrator" "int maxIndirectBounces" [8]
 Option "Ri" "int Pixelsamples" [32]
 Projection "perspective" "fov" [45]
-Translate 0 0 14
-Rotate -18 1 0 0
+Translate 0 0 30
+Rotate -10 1 0 0
 Rotate 0 0 1 0
 WorldBegin 
 Light "PxrDomeLight" "domeLight" "float intensity" [0.600000024] "color lightColor" [1 0.949999988 0.850000024]
@@ -26,205 +25,198 @@ Bxdf "PxrDiffuse" "ground_material" "color diffuseColor" [0.449999988 0.28000000
 Patch "bilinear" "P" [-30 -2.5 -30 30 -2.5 -30 -30 -2.5 30 30 -2.5 30]
 AttributeEnd 
 AttributeBegin 
-Translate -6 -2.0999999 0
-Rotate 0 0 0 1
-Rotate 15 0 1 0
-Rotate 0 1 0 0
-ShadingRate 0.25
-Bxdf "PxrSurface" "almond_surface" "color diffuseColor" [0.591154158 0.331500649 0.15100117] "float diffuseGain" [1] "float diffuseRoughness" [0.75] "color specularFaceColor" [0.0299999993 0.0199999996 0.00999999978] "color specularEdgeColor" [0.100000001 0.0700000003 0.0299999993] "float specularRoughness" [0.550000012] 
-"color specularIor" [1.45000005 1.45000005 1.45000005] "int specularFresnelMode" [0]
-Attribute "displacementbound" "float sphere" [0.119999997] "string coordinatesystem" ["object"]
-Pattern "almond_skin" "disp_out" 
-Displace "PxrDisplace" "displace" "float dispAmount" [1] "reference vector dispVector" ["disp_out:dPdisp"]
-TransformBegin 
-Scale 1.10000002 0.400000006 1.64999998
-Sphere 1 -1 1 360 
-TransformEnd 
-TransformBegin 
-Translate 0.714999974 0 0
-Scale 0.495000005 0.219999999 0.907500029
-Sphere 1 -1 1 360 
-TransformEnd 
-AttributeEnd 
-AttributeBegin 
-Translate -3 -2.4000001 0
-Rotate 0 0 0 1
-Rotate 20 0 1 0
-Rotate 5 1 0 0
-ShadingRate 0.25
-Bxdf "PxrSurface" "pseed_surface" "color diffuseColor" [0.597856879 0.664188266 0.387067974] "float diffuseGain" [1] "float diffuseRoughness" [0.449999988] "color specularFaceColor" [0.0500000007 0.0599999987 0.0399999991] "color specularEdgeColor" [0.180000007 0.200000003 0.119999997] "float specularRoughness" [0.25] 
-"color specularIor" [1.45000005 1.45000005 1.45000005] "int specularFresnelMode" [0]
-Attribute "displacementbound" "float sphere" [0.0500000007] "string coordinatesystem" ["object"]
-Pattern "pseed_skin" "disp_out" 
-Displace "PxrDisplace" "displace" "float dispAmount" [1] "reference vector dispVector" ["disp_out:dPdisp"]
-Scale 0.5 0.100000001 0.300000012
-Sphere 1 -1 1 360 
-AttributeEnd 
-AttributeBegin 
 Translate 0 -2.5 0
-Rotate 0 0 0 1
-Rotate 25 0 1 0
-Rotate 0 1 0 0
-Scale 1 1 1
-ShadingRate 0.25
-Bxdf "PxrSurface" "hazel_surface" "color diffuseColor" [0.511374354 0.25521633 0.0968768746] "float diffuseGain" [1] "float diffuseRoughness" [0.649999976] "color specularFaceColor" [0.0399999991 0.0250000004 0.00999999978] "color specularEdgeColor" [0.150000006 0.100000001 0.0399999991] "float specularRoughness" [0.400000006] 
-"color specularIor" [1.5 1.5 1.5] "int specularFresnelMode" [0]
-Attribute "displacementbound" "float sphere" [0.100000001] "string coordinatesystem" ["object"]
-Pattern "hazel_skin" "disp_out" 
-Displace "PxrDisplace" "displace" "float dispAmount" [1] "reference vector dispVector" ["disp_out:dPdisp"]
+Scale 5.30499983 5.30499983 5.30499983
+Bxdf "PxrSurface" "vase_surface" "color diffuseColor" [0.0500000007 0.0399999991 0.00999999978] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.720000029 0.579999983 0.219999999] "color specularEdgeColor" [0.899999976 0.75 0.349999994] "float specularRoughness" [0.25] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
 Translate 0 0 0
 Rotate -90 1 0 0
-Hyperboloid 0.550000012 0 0 0.680000007 0 0.349999994 360 
+Hyperboloid 0 0 0 0.400000006 0 0 360 
 TransformEnd 
 TransformBegin 
-Translate 0 0.349999994 0
+Translate 0 0 0
 Rotate -90 1 0 0
-Hyperboloid 0.680000007 0 0 0.620000005 0 0.200000003 360 
+Hyperboloid 0.400000006 0 0 0.400370985 0 0.127305999 360 
 TransformEnd 
 TransformBegin 
-Translate 0 0.550000012 0
+Translate 0 0.127305999 0
 Rotate -90 1 0 0
-Hyperboloid 0.620000005 0 0 0.5 0 0.330000013 360 
+Hyperboloid 0.400370985 0 0 0.536637008 0 0.0879919976 360 
 TransformEnd 
 TransformBegin 
-Translate 0 0.879999995 0
+Translate 0 0.215297997 0
 Rotate -90 1 0 0
-Hyperboloid 0.5 0 0 0.300000012 0 0.300000012 360 
+Hyperboloid 0.536637008 0 0 0.638399005 0 0.0943749994 360 
 TransformEnd 
 TransformBegin 
-Translate 0 1.17999995 0
+Translate 0 0.309673011 0
 Rotate -90 1 0 0
-Hyperboloid 0.300000012 0 0 0.100000001 0 0.239999995 360 
+Hyperboloid 0.638399005 0 0 0.706514001 0 0.0902730003 360 
 TransformEnd 
 TransformBegin 
-Translate 0 1.41999996 0
+Translate 0 0.399946004 0
 Rotate -90 1 0 0
-Hyperboloid 0.100000001 0 0 0.00999999978 0 0.0799999982 360 
+Hyperboloid 0.706514001 0 0 0.754112005 0 0.0919139981 360 
+TransformEnd 
+TransformBegin 
+Translate 0 0.491860002 0
+Rotate -90 1 0 0
+Hyperboloid 0.754112005 0 0 0.797372997 0 0.087944001 360 
+TransformEnd 
+TransformBegin 
+Translate 0 0.579804003 0
+Rotate -90 1 0 0
+Hyperboloid 0.797372997 0 0 0.802356005 0 0.180326 360 
+TransformEnd 
+TransformBegin 
+Translate 0 0.760129988 0
+Rotate -90 1 0 0
+Hyperboloid 0.802356005 0 0 0.764321029 0 0.0991199985 360 
+TransformEnd 
+TransformBegin 
+Translate 0 0.859250009 0
+Rotate -90 1 0 0
+Hyperboloid 0.764321029 0 0 0.764881015 0 0 360 
+TransformEnd 
+TransformBegin 
+Translate 0 0.859250009 0
+Rotate -90 1 0 0
+Hyperboloid 0.764881015 0 0 0.734650016 0 0.0515049994 360 
+TransformEnd 
+TransformBegin 
+Translate 0 0.910754979 0
+Rotate -90 1 0 0
+Hyperboloid 0.734650016 0 0 0.686502993 0 0.0548649989 360 
+TransformEnd 
+TransformBegin 
+Translate 0 0.965619981 0
+Rotate -90 1 0 0
+Hyperboloid 0.686502993 0 0 0.605885029 0 0.0576599985 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.02328002 0
+Rotate -90 1 0 0
+Hyperboloid 0.605885029 0 0 0.550460994 0 0.0425500013 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.06582999 0
+Rotate -90 1 0 0
+Hyperboloid 0.550460994 0 0 0.503993988 0 0.0459100008 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.11173999 0
+Rotate -90 1 0 0
+Hyperboloid 0.503993988 0 0 0.464805007 0 0.0509499982 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.16269004 0
+Rotate -90 1 0 0
+Hyperboloid 0.464805007 0 0 0.443529993 0 0.0492600016 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.21194994 0
+Rotate -90 1 0 0
+Hyperboloid 0.443529993 0 0 0.444649994 0 0.0531900004 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.26514006 0
+Rotate -90 1 0 0
+Hyperboloid 0.444649994 0 0 0.458086014 0 0.0554200001 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.32055998 0
+Rotate -90 1 0 0
+Hyperboloid 0.458086014 0 0 0.490556985 0 0.0643799976 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.38494003 0
+Rotate -90 1 0 0
+Hyperboloid 0.490556985 0 0 0.54766202 0 0.0610300004 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.44597006 0
+Rotate -90 1 0 0
+Hyperboloid 0.54766202 0 0 0.591328979 0 0.0363899991 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.48236001 0
+Rotate -90 1 0 0
+Hyperboloid 0.591328979 0 0 0.626039982 0 0.0229499992 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.50531006 0
+Rotate -90 1 0 0
+Hyperboloid 0.626039982 0 0 0.642849028 0 0.00268999999 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.50800002 0
+Rotate -90 1 0 0
+Hyperboloid 0.642849028 0 0 0.642745972 0 0.0108500002 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.51884997 0
+Rotate -90 1 0 0
+Hyperboloid 0.642745972 0 0 0.623203993 0 -0.00448000012 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.51436996 0
+Rotate -90 1 0 0
+Hyperboloid 0.623203993 0 0 0.577992976 0 -0.0220100004 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.49236 0
+Rotate -90 1 0 0
+Hyperboloid 0.577992976 0 0 0.539075971 0 -0.0336599983 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.45869994 0
+Rotate -90 1 0 0
+Hyperboloid 0.539075971 0 0 0.478071004 0 -0.0662700012 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.39242995 0
+Rotate -90 1 0 0
+Hyperboloid 0.478071004 0 0 0.443361014 0 -0.0683600008 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.32406998 0
+Rotate -90 1 0 0
+Hyperboloid 0.443361014 0 0 0.430738986 0 -0.0546999983 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.26936996 0
+Rotate -90 1 0 0
+Hyperboloid 0.430738986 0 0 0.431791008 0 -0.0557399988 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.21362996 0
+Rotate -90 1 0 0
+Hyperboloid 0.431791008 0 0 0.453878999 0 -0.0557500012 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.15787995 0
+Rotate -90 1 0 0
+Hyperboloid 0.453878999 0 0 0.489641011 0 -0.0515399985 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.10634005 0
+Rotate -90 1 0 0
+Hyperboloid 0.489641011 0 0 0.539075971 0 -0.0515399985 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.05480003 0
+Rotate -90 1 0 0
+Hyperboloid 0.539075971 0 0 0.576941013 0 -0.0305000003 360 
+TransformEnd 
+TransformBegin 
+Translate 0 1.02429998 0
+Rotate -90 1 0 0
+Hyperboloid 0.576941013 0 0 0 0 -0.0242999997 360 
 TransformEnd 
 TransformBegin 
 Rotate 90 1 0 0
-Disk 0 0.550000012 360 
-TransformEnd 
-AttributeEnd 
-AttributeBegin 
-Translate 3 -1.79799998 0
-Rotate 0 0 0 1
-Rotate 30 0 1 0
-Rotate 0 1 0 0
-Scale 0.899999976 0.702000022 0.899999976
-ShadingRate 0.200000003
-Bxdf "PxrSurface" "choc_surface" "color diffuseColor" [0.0923837796 0.0431182794 0.030214211] "float diffuseGain" [1] "float diffuseRoughness" [0.100000001] "color specularFaceColor" [0.0599999987 0.0399999991 0.0199999996] "color specularEdgeColor" [0.349999994 0.25 0.150000006] "float specularRoughness" [0.100000001] 
-"color specularIor" [1.54999995 1.54999995 1.54999995] "int specularFresnelMode" [0]
-Sphere 1 -1 1 360 
-AttributeEnd 
-AttributeBegin 
-Translate 6.5 -2.27600002 0
-Rotate 0 0 0 1
-Rotate 0 0 1 0
-Rotate 0 1 0 0
-Scale 2 2 2
-ShadingRate 0.300000012
-Bxdf "PxrSurface" "cashew_surface" "color diffuseColor" [0.78212285 0.661930263 0.385995388] "float diffuseGain" [1] "float diffuseRoughness" [0.550000012] "color specularFaceColor" [0.0399999991 0.0299999993 0.00999999978] "color specularEdgeColor" [0.140000001 0.109999999 0.0500000007] "float specularRoughness" [0.349999994] 
-"color specularIor" [1.45000005 1.45000005 1.45000005] "int specularFresnelMode" [0]
-Attribute "displacementbound" "float sphere" [0.0599999987] "string coordinatesystem" ["object"]
-Pattern "cashew_skin" "disp_out" 
-Displace "PxrDisplace" "displace" "float dispAmount" [1] "reference vector dispVector" ["disp_out:dPdisp"]
-TransformBegin 
-Translate -0.612835526 0 -0.514230072
-Rotate -50 0 1 0
-Scale 0.187199995 0.1008 0.143999994
-Sphere 1 -1 1 360 
-TransformEnd 
-TransformBegin 
-Translate -0.416012913 0 -0.683325171
-Rotate -31.333334 0 1 0
-Scale 0.234770194 0.126414716 0.180592462
-Sphere 1 -1 1 360 
-TransformEnd 
-TransformBegin 
-Translate -0.175422892 0 -0.780529797
-Rotate -12.666667 0 1 0
-Scale 0.280261338 0.15090996 0.215585649
-Sphere 1 -1 1 360 
-TransformEnd 
-TransformBegin 
-Translate 0.0836227685 0 -0.795617521
-Rotate 6 0 1 0
-Scale 0.321685255 0.173215136 0.247450203
-Sphere 1 -1 1 360 
-TransformEnd 
-TransformBegin 
-Translate 0.333870769 0 -0.727000892
-Rotate 24.666666 0 1 0
-Scale 0.357231528 0.192355439 0.274793476
-Sphere 1 -1 1 360 
-TransformEnd 
-TransformBegin 
-Translate 0.548993289 0 -0.581898928
-Rotate 43.3333321 0 1 0
-Scale 0.385346621 0.207494333 0.296420485
-Sphere 1 -1 1 360 
-TransformEnd 
-TransformBegin 
-Translate 0.706358075 0 -0.375577241
-Rotate 62 0 1 0
-Scale 0.404801726 0.217970163 0.311385959
-Sphere 1 -1 1 360 
-TransformEnd 
-TransformBegin 
-Translate 0.78940922 0 -0.129742339
-Rotate 80.6666641 0 1 0
-Scale 0.414746612 0.223325104 0.319035858
-Sphere 1 -1 1 360 
-TransformEnd 
-TransformBegin 
-Translate 0.78940922 0 0.129742339
-Rotate 99.3333359 0 1 0
-Scale 0.414746612 0.223325104 0.319035858
-Sphere 1 -1 1 360 
-TransformEnd 
-TransformBegin 
-Translate 0.706358075 0 0.375577241
-Rotate 118 0 1 0
-Scale 0.404801726 0.217970163 0.311385959
-Sphere 1 -1 1 360 
-TransformEnd 
-TransformBegin 
-Translate 0.548993289 0 0.581898928
-Rotate 136.666672 0 1 0
-Scale 0.385346621 0.207494333 0.296420485
-Sphere 1 -1 1 360 
-TransformEnd 
-TransformBegin 
-Translate 0.333870769 0 0.727000892
-Rotate 155.333328 0 1 0
-Scale 0.357231528 0.192355439 0.274793476
-Sphere 1 -1 1 360 
-TransformEnd 
-TransformBegin 
-Translate 0.0836227685 0 0.795617521
-Rotate 174 0 1 0
-Scale 0.321685255 0.173215136 0.247450203
-Sphere 1 -1 1 360 
-TransformEnd 
-TransformBegin 
-Translate -0.175422892 0 0.780529797
-Rotate 192.666672 0 1 0
-Scale 0.280261338 0.15090996 0.215585649
-Sphere 1 -1 1 360 
-TransformEnd 
-TransformBegin 
-Translate -0.416012913 0 0.683325171
-Rotate 211.333328 0 1 0
-Scale 0.234770194 0.126414716 0.180592462
-Sphere 1 -1 1 360 
-TransformEnd 
-TransformBegin 
-Translate -0.612835526 0 0.514230072
-Rotate 230 0 1 0
-Scale 0.187199995 0.1008 0.143999994
-Sphere 1 -1 1 360 
+Disk 0 0 360 
 TransformEnd 
 AttributeEnd 
 WorldEnd 
