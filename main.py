@@ -16,9 +16,9 @@ GROUND_Y = -2.5
 
 
 def make_vase(ri, x, y, z, scale=1.0):
-    S = 5.305 * scale  # scale factor: maps Houdini units to 8cm real size
+    S = 5.305 * scale  # scale factor
 
-    # Profile points from Houdini: (radius, height)
+    # Profile points (radius, height)
     profile = [
         (0.0, 0.0),
         (0.4, 0.0),
