@@ -1,0 +1,23 @@
+shader zone4_skin(
+    string texturefile = "",
+    output color resultRGB = 0,
+    output float resultRough = 0
+)
+{
+    point Pw = transform("world", P);
+    float angle = atan2(-Pw[0], Pw[2]);
+    float uu = angle / (2.0 * M_PI) + 0.5;
+    uu *= 2.0;
+    uu += 0.4;
+    uu = fmod(uu + 1.0, 1.0);
+    float vv = Pw[1];
+    vv *= -0.1;
+    vv += 0.01;
+
+    color texVal = (color)texture(texturefile, uu, vv);
+    float grey = (texVal[0] + texVal[1] + texVal[2]) / 3.0;
+
+    // Dark areas = rougher, light areas = smoother
+    resultRGB = color(0.04, 0.03, 0.008);  // dark brass diffuse
+    resultRough = 0.25 + (1.0 - grey) * 0.45;
+}

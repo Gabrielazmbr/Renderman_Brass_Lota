@@ -1,0 +1,30 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.13.0.@PROJECT_VERSION_TWEAK@"dev"
+# options: -o shaders/zone2_skin.oso
+shader zone2_skin
+param	float	grooveAmp	0.00499999989		%read{4,4} %write{2147483647,-1}
+oparam	vector	dPdisp	0 0 0		%read{2147483647,-1} %write{5,5}
+global	normal	N	%read{5,5} %write{2147483647,-1}
+global	float	u	%read{0,0} %write{2147483647,-1}
+local	float	angle	%read{2,2} %write{1,1}
+local	float	ridge	%read{5,5} %write{4,4}
+const	float	$const1	2		%read{0,0} %write{2147483647,-1}
+temp	float	$tmp1	%read{1,1} %write{0,0}
+const	float	$const2	3.14159274		%read{1,1} %write{2147483647,-1}
+temp	float	$tmp2	%read{4,4} %write{3,3}
+const	float	$const3	24		%read{2,2} %write{2147483647,-1}
+temp	float	$tmp3	%read{3,3} %write{2,2}
+code ___main___
+# shaders/zone2_skin.osl:6
+#     float angle = u * 2.0 * M_PI;
+	mul		$tmp1 u $const1 	%filename{"shaders/zone2_skin.osl"} %line{6} %argrw{"wrr"}
+	mul		angle $tmp1 $const2 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:7
+#     float ridge = sin(angle * 24.0) * grooveAmp;
+	mul		$tmp3 angle $const3 	%line{7} %argrw{"wrr"}
+	sin		$tmp2 $tmp3 	%argrw{"wr"}
+	mul		ridge $tmp2 grooveAmp 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:8
+#     dPdisp = ridge * N;
+	mul		dPdisp ridge N 	%line{8} %argrw{"wrr"}
+	end

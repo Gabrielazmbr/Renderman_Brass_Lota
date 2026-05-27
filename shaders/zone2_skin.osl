@@ -1,0 +1,9 @@
+shader zone2_skin(
+    float grooveAmp = 0.005,
+    output vector dPdisp = 0
+)
+{
+    float angle = u * 2.0 * M_PI;
+    float ridge = sin(angle * 24.0) * grooveAmp;
+    dPdisp = ridge * N;
+}

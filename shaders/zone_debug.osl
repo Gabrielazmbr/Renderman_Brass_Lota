@@ -1,0 +1,7 @@
+shader zone_debug(
+    color zoneColor = color(1, 0, 0),
+    output color resultRGB = 0
+)
+{
+    resultRGB = zoneColor;
+}

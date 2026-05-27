@@ -1,24 +1,19 @@
 ##RenderMan RIB
 version 3.04999995
+Option "searchpath" "string shader" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/shaders:@"]
 Display "output/render.exr" "openexr" "rgba" 
 Format 1400 800 1
 Integrator "PxrPathTracer" "integrator" "int maxIndirectBounces" [8]
 Option "Ri" "int Pixelsamples" [32]
 Projection "perspective" "fov" [45]
-Translate 0 0 30
+Translate 0 -3 20
 Rotate -10 1 0 0
 Rotate 0 0 1 0
 WorldBegin 
-Light "PxrDomeLight" "domeLight" "float intensity" [0.600000024] "color lightColor" [1 0.949999988 0.850000024]
 AttributeBegin 
-Translate -8 10 6
-Rotate -40 1 0 0
-Light "PxrRectLight" "keyLight" "float intensity" [15] "color lightColor" [1 0.970000029 0.899999976]
-AttributeEnd 
-AttributeBegin 
-Translate 8 5 -2
-Rotate -20 1 0 0
-Light "PxrRectLight" "fillLight" "float intensity" [4] "color lightColor" [0.850000024 0.899999976 1]
+Rotate -90 1 0 0
+Rotate 90 0 0 1
+Light "PxrDomeLight" "domeLight" "float intensity" [1] "string lightColorMap" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/hdri/INT_AMB_WARM_001.tex"]
 AttributeEnd 
 AttributeBegin 
 Bxdf "PxrDiffuse" "ground_material" "color diffuseColor" [0.449999988 0.280000001 0.119999997]
@@ -27,196 +22,2293 @@ AttributeEnd
 AttributeBegin 
 Translate 0 -2.5 0
 Scale 5.30499983 5.30499983 5.30499983
-Bxdf "PxrSurface" "vase_surface" "color diffuseColor" [0.0500000007 0.0399999991 0.00999999978] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.720000029 0.579999983 0.219999999] "color specularEdgeColor" [0.899999976 0.75 0.349999994] "float specularRoughness" [0.25] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+ShadingRate 2
+AttributeBegin 
+Bxdf "PxrSurface" "zone1" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.850000024 0.680000007 0.280000001] "color specularEdgeColor" [0.949999988 0.800000012 0.400000006] "float specularRoughness" [0.400000006] "color specularIor" [1.79999995 1.79999995 1.79999995] 
 "int specularFresnelMode" [0]
 TransformBegin 
 Translate 0 0 0
 Rotate -90 1 0 0
-Hyperboloid 0 0 0 0.400000006 0 0 360 
+Hyperboloid 0 0 0 0.399753988 0 0 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone1" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.850000024 0.680000007 0.280000001] "color specularEdgeColor" [0.949999988 0.800000012 0.400000006] "float specularRoughness" [0.400000006] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
 Translate 0 0 0
 Rotate -90 1 0 0
-Hyperboloid 0.400000006 0 0 0.400370985 0 0.127305999 360 
+Hyperboloid 0.399753988 0 0 0.402359992 0 0.128591001 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 0.127305999 0
+Translate 0 0.128591001 0
 Rotate -90 1 0 0
-Hyperboloid 0.400370985 0 0 0.536637008 0 0.0879919976 360 
+Hyperboloid 0.402359992 0 0 0.410757989 0 0.00541700004 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 0.215297997 0
+Translate 0 0.134008005 0
 Rotate -90 1 0 0
-Hyperboloid 0.536637008 0 0 0.638399005 0 0.0943749994 360 
+Hyperboloid 0.410757989 0 0 0.419153988 0 0.00542100007 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 0.309673011 0
+Translate 0 0.139429003 0
 Rotate -90 1 0 0
-Hyperboloid 0.638399005 0 0 0.706514001 0 0.0902730003 360 
+Hyperboloid 0.419153988 0 0 0.427545995 0 0.00542599987 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 0.399946004 0
+Translate 0 0.144854993 0
 Rotate -90 1 0 0
-Hyperboloid 0.706514001 0 0 0.754112005 0 0.0919139981 360 
+Hyperboloid 0.427545995 0 0 0.435932994 0 0.00543100014 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 0.491860002 0
+Translate 0 0.150286004 0
 Rotate -90 1 0 0
-Hyperboloid 0.754112005 0 0 0.797372997 0 0.087944001 360 
+Hyperboloid 0.435932994 0 0 0.444317997 0 0.00543599995 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 0.579804003 0
+Translate 0 0.155722007 0
 Rotate -90 1 0 0
-Hyperboloid 0.797372997 0 0 0.802356005 0 0.180326 360 
+Hyperboloid 0.444317997 0 0 0.452701986 0 0.00543599995 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 0.760129988 0
+Translate 0 0.161157995 0
 Rotate -90 1 0 0
-Hyperboloid 0.802356005 0 0 0.764321029 0 0.0991199985 360 
+Hyperboloid 0.452701986 0 0 0.461091995 0 0.00542900013 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 0.859250009 0
+Translate 0 0.166586995 0
 Rotate -90 1 0 0
-Hyperboloid 0.764321029 0 0 0.764881015 0 0 360 
+Hyperboloid 0.461091995 0 0 0.469496012 0 0.00541300001 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 0.859250009 0
+Translate 0 0.172000006 0
 Rotate -90 1 0 0
-Hyperboloid 0.764881015 0 0 0.734650016 0 0.0515049994 360 
+Hyperboloid 0.469496012 0 0 0.477917999 0 0.00538899982 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 0.910754979 0
+Translate 0 0.177388996 0
 Rotate -90 1 0 0
-Hyperboloid 0.734650016 0 0 0.686502993 0 0.0548649989 360 
+Hyperboloid 0.477917999 0 0 0.48636201 0 0.00536100008 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 0.965619981 0
+Translate 0 0.182750002 0
 Rotate -90 1 0 0
-Hyperboloid 0.686502993 0 0 0.605885029 0 0.0576599985 360 
+Hyperboloid 0.48636201 0 0 0.494818985 0 0.00534299994 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.02328002 0
+Translate 0 0.188093007 0
 Rotate -90 1 0 0
-Hyperboloid 0.605885029 0 0 0.550460994 0 0.0425500013 360 
+Hyperboloid 0.494818985 0 0 0.503269017 0 0.005351 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.06582999 0
+Translate 0 0.193443999 0
 Rotate -90 1 0 0
-Hyperboloid 0.550460994 0 0 0.503993988 0 0.0459100008 360 
+Hyperboloid 0.503269017 0 0 0.511675 0 0.00540600019 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.11173999 0
+Translate 0 0.198850006 0
 Rotate -90 1 0 0
-Hyperboloid 0.503993988 0 0 0.464805007 0 0.0509499982 360 
+Hyperboloid 0.511675 0 0 0.519986987 0 0.00552699994 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.16269004 0
+Translate 0 0.204376996 0
 Rotate -90 1 0 0
-Hyperboloid 0.464805007 0 0 0.443529993 0 0.0492600016 360 
+Hyperboloid 0.519986987 0 0 0.528147995 0 0.00571999978 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.21194994 0
+Translate 0 0.210097 0
 Rotate -90 1 0 0
-Hyperboloid 0.443529993 0 0 0.444649994 0 0.0531900004 360 
+Hyperboloid 0.528147995 0 0 0.536110997 0 0.00597500009 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.26514006 0
+Translate 0 0.216071993 0
 Rotate -90 1 0 0
-Hyperboloid 0.444649994 0 0 0.458086014 0 0.0554200001 360 
+Hyperboloid 0.536110997 0 0 0.543856978 0 0.0062549999 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.32055998 0
+Translate 0 0.222326994 0
 Rotate -90 1 0 0
-Hyperboloid 0.458086014 0 0 0.490556985 0 0.0643799976 360 
+Hyperboloid 0.543856978 0 0 0.551403999 0 0.00651000021 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.38494003 0
+Translate 0 0.228836998 0
 Rotate -90 1 0 0
-Hyperboloid 0.490556985 0 0 0.54766202 0 0.0610300004 360 
+Hyperboloid 0.551403999 0 0 0.558800995 0 0.00670300005 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.44597006 0
+Translate 0 0.235540003 0
 Rotate -90 1 0 0
-Hyperboloid 0.54766202 0 0 0.591328979 0 0.0363899991 360 
+Hyperboloid 0.558800995 0 0 0.566107988 0 0.00682100002 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.48236001 0
+Translate 0 0.242360994 0
 Rotate -90 1 0 0
-Hyperboloid 0.591328979 0 0 0.626039982 0 0.0229499992 360 
+Hyperboloid 0.566107988 0 0 0.57338202 0 0.00686800014 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.50531006 0
+Translate 0 0.249228999 0
 Rotate -90 1 0 0
-Hyperboloid 0.626039982 0 0 0.642849028 0 0.00268999999 360 
+Hyperboloid 0.57338202 0 0 0.580664992 0 0.00686099986 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.50800002 0
+Translate 0 0.256089985 0
 Rotate -90 1 0 0
-Hyperboloid 0.642849028 0 0 0.642745972 0 0.0108500002 360 
+Hyperboloid 0.580664992 0 0 0.587984979 0 0.00682199979 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.51884997 0
+Translate 0 0.262912005 0
 Rotate -90 1 0 0
-Hyperboloid 0.642745972 0 0 0.623203993 0 -0.00448000012 360 
+Hyperboloid 0.587984979 0 0 0.595348001 0 0.00677399989 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.51436996 0
+Translate 0 0.269686013 0
 Rotate -90 1 0 0
-Hyperboloid 0.623203993 0 0 0.577992976 0 -0.0220100004 360 
+Hyperboloid 0.595348001 0 0 0.602741003 0 0.00673899986 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.49236 0
+Translate 0 0.276425004 0
 Rotate -90 1 0 0
-Hyperboloid 0.577992976 0 0 0.539075971 0 -0.0336599983 360 
+Hyperboloid 0.602741003 0 0 0.610130012 0 0.00673499983 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.45869994 0
+Translate 0 0.283160001 0
 Rotate -90 1 0 0
-Hyperboloid 0.539075971 0 0 0.478071004 0 -0.0662700012 360 
+Hyperboloid 0.610130012 0 0 0.617461979 0 0.00678399997 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.39242995 0
+Translate 0 0.289943993 0
 Rotate -90 1 0 0
-Hyperboloid 0.478071004 0 0 0.443361014 0 -0.0683600008 360 
+Hyperboloid 0.617461979 0 0 0.624668002 0 0.00689599989 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.32406998 0
+Translate 0 0.296840012 0
 Rotate -90 1 0 0
-Hyperboloid 0.443361014 0 0 0.430738986 0 -0.0546999983 360 
+Hyperboloid 0.624668002 0 0 0.631680012 0 0.00707300007 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.26936996 0
+Translate 0 0.303912997 0
 Rotate -90 1 0 0
-Hyperboloid 0.430738986 0 0 0.431791008 0 -0.0557399988 360 
+Hyperboloid 0.631680012 0 0 0.638444006 0 0.00729899993 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.21362996 0
+Translate 0 0.311212003 0
 Rotate -90 1 0 0
-Hyperboloid 0.431791008 0 0 0.453878999 0 -0.0557500012 360 
+Hyperboloid 0.638444006 0 0 0.644946992 0 0.00753800012 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.15787995 0
+Translate 0 0.318749994 0
 Rotate -90 1 0 0
-Hyperboloid 0.453878999 0 0 0.489641011 0 -0.0515399985 360 
+Hyperboloid 0.644946992 0 0 0.651223004 0 0.00774700008 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.10634005 0
+Translate 0 0.326496989 0
 Rotate -90 1 0 0
-Hyperboloid 0.489641011 0 0 0.539075971 0 -0.0515399985 360 
+Hyperboloid 0.651223004 0 0 0.65733999 0 0.00789599959 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.05480003 0
+Translate 0 0.334392995 0
 Rotate -90 1 0 0
-Hyperboloid 0.539075971 0 0 0.576941013 0 -0.0305000003 360 
+Hyperboloid 0.65733999 0 0 0.663372993 0 0.00797899999 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
 TransformBegin 
-Translate 0 1.02429998 0
+Translate 0 0.342372 0
 Rotate -90 1 0 0
-Hyperboloid 0.576941013 0 0 0 0 -0.0242999997 360 
+Hyperboloid 0.663372993 0 0 0.669384003 0 0.00800400041 360 
 TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.35037601 0
+Rotate -90 1 0 0
+Hyperboloid 0.669384003 0 0 0.675408006 0 0.00799600035 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.358372003 0
+Rotate -90 1 0 0
+Hyperboloid 0.675408006 0 0 0.681442976 0 0.00798099954 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.366353005 0
+Rotate -90 1 0 0
+Hyperboloid 0.681442976 0 0 0.687452972 0 0.00798800029 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.374341011 0
+Rotate -90 1 0 0
+Hyperboloid 0.687452972 0 0 0.693373978 0 0.0080380002 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.382378995 0
+Rotate -90 1 0 0
+Hyperboloid 0.693373978 0 0 0.699126005 0 0.00814099982 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.390520006 0
+Rotate -90 1 0 0
+Hyperboloid 0.699126005 0 0 0.704638004 0 0.00829199981 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.398811996 0
+Rotate -90 1 0 0
+Hyperboloid 0.704638004 0 0 0.709872007 0 0.00846900046 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.407281011 0
+Rotate -90 1 0 0
+Hyperboloid 0.709872007 0 0 0.714841008 0 0.00863800012 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.415919006 0
+Rotate -90 1 0 0
+Hyperboloid 0.714841008 0 0 0.719599009 0 0.00877500046 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.424694002 0
+Rotate -90 1 0 0
+Hyperboloid 0.719599009 0 0 0.724216998 0 0.0088630002 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.433557004 0
+Rotate -90 1 0 0
+Hyperboloid 0.724216998 0 0 0.728762984 0 0.00890799984 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.442465007 0
+Rotate -90 1 0 0
+Hyperboloid 0.728762984 0 0 0.733289003 0 0.00892100018 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.451386005 0
+Rotate -90 1 0 0
+Hyperboloid 0.733289003 0 0 0.737821996 0 0.00891499966 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.460301012 0
+Rotate -90 1 0 0
+Hyperboloid 0.737821996 0 0 0.742367983 0 0.00890399981 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.469204992 0
+Rotate -90 1 0 0
+Hyperboloid 0.742367983 0 0 0.746918976 0 0.00889699999 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.478101999 0
+Rotate -90 1 0 0
+Hyperboloid 0.746918976 0 0 0.751461029 0 0.00890100002 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.487002999 0
+Rotate -90 1 0 0
+Hyperboloid 0.751461029 0 0 0.755977988 0 0.00891199987 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.495914996 0
+Rotate -90 1 0 0
+Hyperboloid 0.755977988 0 0 0.760462999 0 0.00892900024 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.50484401 0
+Rotate -90 1 0 0
+Hyperboloid 0.760462999 0 0 0.764916003 0 0.00894500036 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.513788998 0
+Rotate -90 1 0 0
+Hyperboloid 0.764916003 0 0 0.769344985 0 0.008959 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.522747993 0
+Rotate -90 1 0 0
+Hyperboloid 0.769344985 0 0 0.773756981 0 0.00896700006 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.531714976 0
+Rotate -90 1 0 0
+Hyperboloid 0.773756981 0 0 0.778160989 0 0.00897100009 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.540686011 0
+Rotate -90 1 0 0
+Hyperboloid 0.778160989 0 0 0.782562971 0 0.00897200033 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.549658 0
+Rotate -90 1 0 0
+Hyperboloid 0.782562971 0 0 0.78696698 0 0.00897200033 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.55862999 0
+Rotate -90 1 0 0
+Hyperboloid 0.78696698 0 0 0.791373014 0 0.00896999985 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.567600012 0
+Rotate -90 1 0 0
+Hyperboloid 0.791373014 0 0 0.79578203 0 0.00896899961 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Attribute "displacementbound" "float sphere" [0.0149999997] "string coordinatesystem" ["object"]
+Pattern "zone2_skin" "z2_out" 
+Displace "PxrDisplace" "z2_disp" "float dispAmount" [1] "reference vector dispVector" ["z2_out:dPdisp"]
+Bxdf "PxrSurface" "zone2" "color diffuseColor" [0.0299999993 0.0199999996 0.00499999989] "float diffuseGain" [0.0799999982] "color specularFaceColor" [0.779999971 0.620000005 0.239999995] "color specularEdgeColor" [0.899999976 0.74000001 0.340000004] "float specularRoughness" [0.449999988] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.576569021 0
+Rotate -90 1 0 0
+Hyperboloid 0.79578203 0 0 0.797550023 0 0.00962099992 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone3" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0399999991] "color specularFaceColor" [0.920000017 0.75999999 0.319999993] "color specularEdgeColor" [0.980000019 0.879999995 0.479999989] "float specularRoughness" [0.200000003] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.586189985 0
+Rotate -90 1 0 0
+Hyperboloid 0.797550023 0 0 0.798929989 0 0.0499509983 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone3" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0399999991] "color specularFaceColor" [0.920000017 0.75999999 0.319999993] "color specularEdgeColor" [0.980000019 0.879999995 0.479999989] "float specularRoughness" [0.200000003] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.636141002 0
+Rotate -90 1 0 0
+Hyperboloid 0.798929989 0 0 0.800033987 0 0.0399600007 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone3" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0399999991] "color specularFaceColor" [0.920000017 0.75999999 0.319999993] "color specularEdgeColor" [0.980000019 0.879999995 0.479999989] "float specularRoughness" [0.200000003] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.676101029 0
+Rotate -90 1 0 0
+Hyperboloid 0.800033987 0 0 0.801138997 0 0.0399600007 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone3" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0399999991] "color specularFaceColor" [0.920000017 0.75999999 0.319999993] "color specularEdgeColor" [0.980000019 0.879999995 0.479999989] "float specularRoughness" [0.200000003] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.716060996 0
+Rotate -90 1 0 0
+Hyperboloid 0.801138997 0 0 0.802242994 0 0.0399600007 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.756021023 0
+Rotate -90 1 0 0
+Hyperboloid 0.802242994 0 0 0.799224019 0 0.00941799954 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.765438974 0
+Rotate -90 1 0 0
+Hyperboloid 0.799224019 0 0 0.796123028 0 0.00940799993 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.774846971 0
+Rotate -90 1 0 0
+Hyperboloid 0.796123028 0 0 0.792894006 0 0.00939599983 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.784242988 0
+Rotate -90 1 0 0
+Hyperboloid 0.792894006 0 0 0.789537013 0 0.00938600022 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.793628991 0
+Rotate -90 1 0 0
+Hyperboloid 0.789537013 0 0 0.786080003 0 0.00937699992 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.803005993 0
+Rotate -90 1 0 0
+Hyperboloid 0.786080003 0 0 0.782562017 0 0.00936799962 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.812373996 0
+Rotate -90 1 0 0
+Hyperboloid 0.782562017 0 0 0.779008985 0 0.0093480004 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.821721971 0
+Rotate -90 1 0 0
+Hyperboloid 0.779008985 0 0 0.775421023 0 0.0093080001 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.831030011 0
+Rotate -90 1 0 0
+Hyperboloid 0.775421023 0 0 0.771768987 0 0.00923699979 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.840267003 0
+Rotate -90 1 0 0
+Hyperboloid 0.771768987 0 0 0.767997026 0 0.00913199969 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.849398971 0
+Rotate -90 1 0 0
+Hyperboloid 0.767997026 0 0 0.764033973 0 0.00900099985 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.858399987 0
+Rotate -90 1 0 0
+Hyperboloid 0.764033973 0 0 0.759818017 0 0.00886099972 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.867260993 0
+Rotate -90 1 0 0
+Hyperboloid 0.759818017 0 0 0.755311012 0 0.00872899964 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.875989974 0
+Rotate -90 1 0 0
+Hyperboloid 0.755311012 0 0 0.750503004 0 0.00860800035 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.884598017 0
+Rotate -90 1 0 0
+Hyperboloid 0.750503004 0 0 0.745396972 0 0.00848199986 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.893079996 0
+Rotate -90 1 0 0
+Hyperboloid 0.745396972 0 0 0.739993989 0 0.00834100042 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.90142101 0
+Rotate -90 1 0 0
+Hyperboloid 0.739993989 0 0 0.734297991 0 0.0081770001 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.909597993 0
+Rotate -90 1 0 0
+Hyperboloid 0.734297991 0 0 0.728322029 0 0.00800499972 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.917603016 0
+Rotate -90 1 0 0
+Hyperboloid 0.728322029 0 0 0.722106993 0 0.00784400012 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.925446987 0
+Rotate -90 1 0 0
+Hyperboloid 0.722106993 0 0 0.715700984 0 0.00769900018 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.933146 0
+Rotate -90 1 0 0
+Hyperboloid 0.715700984 0 0 0.709133983 0 0.00755799981 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.940703988 0
+Rotate -90 1 0 0
+Hyperboloid 0.709133983 0 0 0.702408016 0 0.00739399996 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.948098004 0
+Rotate -90 1 0 0
+Hyperboloid 0.702408016 0 0 0.695490003 0 0.00717899995 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.955277026 0
+Rotate -90 1 0 0
+Hyperboloid 0.695490003 0 0 0.688332975 0 0.00690599997 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.962182999 0
+Rotate -90 1 0 0
+Hyperboloid 0.688332975 0 0 0.680903018 0 0.0065919999 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.968774974 0
+Rotate -90 1 0 0
+Hyperboloid 0.680903018 0 0 0.673205018 0 0.00628700014 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.975062013 0
+Rotate -90 1 0 0
+Hyperboloid 0.673205018 0 0 0.665280998 0 0.00603100006 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.981092989 0
+Rotate -90 1 0 0
+Hyperboloid 0.665280998 0 0 0.657199979 0 0.00585500011 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.986948013 0
+Rotate -90 1 0 0
+Hyperboloid 0.657199979 0 0 0.649029016 0 0.00575699983 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.992704988 0
+Rotate -90 1 0 0
+Hyperboloid 0.649029016 0 0 0.640825987 0 0.00572599983 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 0.998431027 0
+Rotate -90 1 0 0
+Hyperboloid 0.640825987 0 0 0.632632017 0 0.00573900016 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.00416994 0
+Rotate -90 1 0 0
+Hyperboloid 0.632632017 0 0 0.624469995 0 0.00577999977 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.00995004 0
+Rotate -90 1 0 0
+Hyperboloid 0.624469995 0 0 0.616349995 0 0.00584000023 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.01578999 0
+Rotate -90 1 0 0
+Hyperboloid 0.616349995 0 0 0.608273983 0 0.00589000015 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Pattern "zone4_skin" "z4_out" "string texturefile" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/textures/TEXTURE_SYMBOLS_ALBEDO_2.tex"]
+Bxdf "PxrSurface" "zone4" "reference color diffuseColor" ["z4_out:resultRGB"] "float diffuseGain" [0.150000006] "color specularFaceColor" [0.649999976 0.519999981 0.200000003] "color specularEdgeColor" [0.800000012 0.649999976 0.280000001] "reference float specularRoughness" ["z4_out:resultRough"] "color specularIor" [1.79999995 1.79999995 1.79999995] "int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.02168 0
+Rotate -90 1 0 0
+Hyperboloid 0.608273983 0 0 0.600237012 0 0.00594000006 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.02761996 0
+Rotate -90 1 0 0
+Hyperboloid 0.600237012 0 0 0.592234015 0 0.00598999998 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.03360999 0
+Rotate -90 1 0 0
+Hyperboloid 0.592234015 0 0 0.58426398 0 0.00602999981 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.03963995 0
+Rotate -90 1 0 0
+Hyperboloid 0.58426398 0 0 0.576332986 0 0.00607000012 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.04570997 0
+Rotate -90 1 0 0
+Hyperboloid 0.576332986 0 0 0.568463027 0 0.00615999987 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.05186999 0
+Rotate -90 1 0 0
+Hyperboloid 0.568463027 0 0 0.560684025 0 0.00626000017 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.05813003 0
+Rotate -90 1 0 0
+Hyperboloid 0.560684025 0 0 0.553026021 0 0.00639999984 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.06453001 0
+Rotate -90 1 0 0
+Hyperboloid 0.553026021 0 0 0.545508981 0 0.0065700002 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.0711 0
+Rotate -90 1 0 0
+Hyperboloid 0.545508981 0 0 0.538138986 0 0.00673000002 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.07782996 0
+Rotate -90 1 0 0
+Hyperboloid 0.538138986 0 0 0.530906022 0 0.00688999984 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.08472002 0
+Rotate -90 1 0 0
+Hyperboloid 0.530906022 0 0 0.523801982 0 0.0070199999 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.09174001 0
+Rotate -90 1 0 0
+Hyperboloid 0.523801982 0 0 0.516828001 0 0.00713999989 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.09888005 0
+Rotate -90 1 0 0
+Hyperboloid 0.516828001 0 0 0.50999701 0 0.00728000002 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.10616004 0
+Rotate -90 1 0 0
+Hyperboloid 0.50999701 0 0 0.503320992 0 0.00742000015 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.11357999 0
+Rotate -90 1 0 0
+Hyperboloid 0.503320992 0 0 0.496807992 0 0.00755999982 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.12114 0
+Rotate -90 1 0 0
+Hyperboloid 0.496807992 0 0 0.490453005 0 0.00771000003 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.12884998 0
+Rotate -90 1 0 0
+Hyperboloid 0.490453005 0 0 0.484257013 0 0.00784000009 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.13669002 0
+Rotate -90 1 0 0
+Hyperboloid 0.484257013 0 0 0.478244007 0 0.00798999984 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.14468002 0
+Rotate -90 1 0 0
+Hyperboloid 0.478244007 0 0 0.472463995 0 0.00815999974 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.15284002 0
+Rotate -90 1 0 0
+Hyperboloid 0.472463995 0 0 0.466991991 0 0.00836000033 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.16120005 0
+Rotate -90 1 0 0
+Hyperboloid 0.466991991 0 0 0.461905986 0 0.00858999975 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.16979003 0
+Rotate -90 1 0 0
+Hyperboloid 0.461905986 0 0 0.457275003 0 0.00884000026 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.17862999 0
+Rotate -90 1 0 0
+Hyperboloid 0.457275003 0 0 0.453171015 0 0.00906000007 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.18769002 0
+Rotate -90 1 0 0
+Hyperboloid 0.453171015 0 0 0.449683994 0 0.00925999973 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.19694996 0
+Rotate -90 1 0 0
+Hyperboloid 0.449683994 0 0 0.446918011 0 0.00946000032 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.20641005 0
+Rotate -90 1 0 0
+Hyperboloid 0.446918011 0 0 0.444950014 0 0.00963999983 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.21605003 0
+Rotate -90 1 0 0
+Hyperboloid 0.444950014 0 0 0.443787992 0 0.00977999996 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.22582996 0
+Rotate -90 1 0 0
+Hyperboloid 0.443787992 0 0 0.443360001 0 0.00989000034 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.23572004 0
+Rotate -90 1 0 0
+Hyperboloid 0.443360001 0 0 0.443560988 0 0.0099600004 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.24567997 0
+Rotate -90 1 0 0
+Hyperboloid 0.443560988 0 0 0.444296002 0 0.00997000001 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.25565004 0
+Rotate -90 1 0 0
+Hyperboloid 0.444296002 0 0 0.44549799 0 0.00992999971 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.26558006 0
+Rotate -90 1 0 0
+Hyperboloid 0.44549799 0 0 0.447118014 0 0.00987999979 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.27546 0
+Rotate -90 1 0 0
+Hyperboloid 0.447118014 0 0 0.449108988 0 0.00980999973 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.28526998 0
+Rotate -90 1 0 0
+Hyperboloid 0.449108988 0 0 0.45144099 0 0.0097099999 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.29498005 0
+Rotate -90 1 0 0
+Hyperboloid 0.45144099 0 0 0.454106003 0 0.00960000046 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.30457997 0
+Rotate -90 1 0 0
+Hyperboloid 0.454106003 0 0 0.457120001 0 0.00949000008 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.31406999 0
+Rotate -90 1 0 0
+Hyperboloid 0.457120001 0 0 0.460496992 0 0.00935999956 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.32342994 0
+Rotate -90 1 0 0
+Hyperboloid 0.460496992 0 0 0.464224994 0 0.00923999958 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.33266997 0
+Rotate -90 1 0 0
+Hyperboloid 0.464224994 0 0 0.468263 0 0.00913000014 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.34179997 0
+Rotate -90 1 0 0
+Hyperboloid 0.468263 0 0 0.472566992 0 0.00901999976 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.35081995 0
+Rotate -90 1 0 0
+Hyperboloid 0.472566992 0 0 0.477118999 0 0.00889999978 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.35971999 0
+Rotate -90 1 0 0
+Hyperboloid 0.477118999 0 0 0.481949002 0 0.00872000027 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.36844003 0
+Rotate -90 1 0 0
+Hyperboloid 0.481949002 0 0 0.487114012 0 0.00850000046 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.37694001 0
+Rotate -90 1 0 0
+Hyperboloid 0.487114012 0 0 0.492677003 0 0.00820999965 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.38514996 0
+Rotate -90 1 0 0
+Hyperboloid 0.492677003 0 0 0.498654008 0 0.00791000016 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.39305997 0
+Rotate -90 1 0 0
+Hyperboloid 0.498654008 0 0 0.504998028 0 0.00765000004 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.40070999 0
+Rotate -90 1 0 0
+Hyperboloid 0.504998028 0 0 0.511620998 0 0.00743999984 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.40814996 0
+Rotate -90 1 0 0
+Hyperboloid 0.511620998 0 0 0.518427014 0 0.00730999978 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.41545999 0
+Rotate -90 1 0 0
+Hyperboloid 0.518427014 0 0 0.525341988 0 0.00720999995 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.42267001 0
+Rotate -90 1 0 0
+Hyperboloid 0.525341988 0 0 0.532329023 0 0.00713999989 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.42981005 0
+Rotate -90 1 0 0
+Hyperboloid 0.532329023 0 0 0.539390028 0 0.00706000021 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.43686998 0
+Rotate -90 1 0 0
+Hyperboloid 0.539390028 0 0 0.546546996 0 0.00695999991 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.44383001 0
+Rotate -90 1 0 0
+Hyperboloid 0.546546996 0 0 0.553824008 0 0.00683999993 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.45067 0
+Rotate -90 1 0 0
+Hyperboloid 0.553824008 0 0 0.561237991 0 0.00671999995 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.45738995 0
+Rotate -90 1 0 0
+Hyperboloid 0.561237991 0 0 0.568789005 0 0.00661000004 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.46399999 0
+Rotate -90 1 0 0
+Hyperboloid 0.568789005 0 0 0.576479018 0 0.00650000013 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.47049999 0
+Rotate -90 1 0 0
+Hyperboloid 0.576479018 0 0 0.584312022 0 0.00632999977 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.47683001 0
+Rotate -90 1 0 0
+Hyperboloid 0.584312022 0 0 0.592294991 0 0.00609999988 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.48292994 0
+Rotate -90 1 0 0
+Hyperboloid 0.592294991 0 0 0.600434005 0 0.00576000009 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.48869002 0
+Rotate -90 1 0 0
+Hyperboloid 0.600434005 0 0 0.608720005 0 0.00530999992 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.49399996 0
+Rotate -90 1 0 0
+Hyperboloid 0.608720005 0 0 0.617133975 0 0.00477 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.49877 0
+Rotate -90 1 0 0
+Hyperboloid 0.617133975 0 0 0.625647008 0 0.00422 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.50299001 0
+Rotate -90 1 0 0
+Hyperboloid 0.625647008 0 0 0.634223998 0 0.00374000007 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.50672996 0
+Rotate -90 1 0 0
+Hyperboloid 0.634223998 0 0 0.642827988 0 0.00347999996 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone5" "color diffuseColor" [0.0199999996 0.0149999997 0.00499999989] "float diffuseGain" [0.0500000007] "color specularFaceColor" [0.879999995 0.720000029 0.300000012] "color specularEdgeColor" [0.959999979 0.819999993 0.419999987] "float specularRoughness" [0.300000012] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.51021004 0
+Rotate -90 1 0 0
+Hyperboloid 0.642827988 0 0 0.641427994 0 0.00834000017 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.51855004 0
+Rotate -90 1 0 0
+Hyperboloid 0.641427994 0 0 0.631856024 0 -0.0028299999 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.51572001 0
+Rotate -90 1 0 0
+Hyperboloid 0.631856024 0 0 0.622358024 0 -0.00301999995 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.51269996 0
+Rotate -90 1 0 0
+Hyperboloid 0.622358024 0 0 0.612998009 0 -0.00338999997 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.50931001 0
+Rotate -90 1 0 0
+Hyperboloid 0.612998009 0 0 0.603824019 0 -0.0038399999 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.50547004 0
+Rotate -90 1 0 0
+Hyperboloid 0.603824019 0 0 0.594877005 0 -0.00432999991 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.50114 0
+Rotate -90 1 0 0
+Hyperboloid 0.594877005 0 0 0.586193025 0 -0.00482999999 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.49631 0
+Rotate -90 1 0 0
+Hyperboloid 0.586193025 0 0 0.577804029 0 -0.00534000015 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.49097002 0
+Rotate -90 1 0 0
+Hyperboloid 0.577804029 0 0 0.56971699 0 -0.00579999993 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.48517001 0
+Rotate -90 1 0 0
+Hyperboloid 0.56971699 0 0 0.561914027 0 -0.00620999979 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.47896004 0
+Rotate -90 1 0 0
+Hyperboloid 0.561914027 0 0 0.554356992 0 -0.0065299999 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.47242999 0
+Rotate -90 1 0 0
+Hyperboloid 0.554356992 0 0 0.547008991 0 -0.00677999994 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.46564996 0
+Rotate -90 1 0 0
+Hyperboloid 0.547008991 0 0 0.539833009 0 -0.00695999991 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.45869005 0
+Rotate -90 1 0 0
+Hyperboloid 0.539833009 0 0 0.532791018 0 -0.00711000012 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.45158005 0
+Rotate -90 1 0 0
+Hyperboloid 0.532791018 0 0 0.525839984 0 -0.00719999988 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.44438004 0
+Rotate -90 1 0 0
+Hyperboloid 0.525839984 0 0 0.518939972 0 -0.00724999979 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.43712997 0
+Rotate -90 1 0 0
+Hyperboloid 0.518939972 0 0 0.51206702 0 -0.00726999994 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.42986 0
+Rotate -90 1 0 0
+Hyperboloid 0.51206702 0 0 0.505235016 0 -0.00730999978 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.42254996 0
+Rotate -90 1 0 0
+Hyperboloid 0.505235016 0 0 0.498492986 0 -0.00736000016 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.41518998 0
+Rotate -90 1 0 0
+Hyperboloid 0.498492986 0 0 0.491928011 0 -0.00749000022 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.40769994 0
+Rotate -90 1 0 0
+Hyperboloid 0.491928011 0 0 0.485641986 0 -0.00767999981 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.40002 0
+Rotate -90 1 0 0
+Hyperboloid 0.485641986 0 0 0.47972399 0 -0.00795000046 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.39207006 0
+Rotate -90 1 0 0
+Hyperboloid 0.47972399 0 0 0.474211991 0 -0.00824999996 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.38382006 0
+Rotate -90 1 0 0
+Hyperboloid 0.474211991 0 0 0.469076991 0 -0.00851000007 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.37530994 0
+Rotate -90 1 0 0
+Hyperboloid 0.469076991 0 0 0.464246988 0 -0.00872999988 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.36658001 0
+Rotate -90 1 0 0
+Hyperboloid 0.464246988 0 0 0.459652007 0 -0.00889000017 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.35768998 0
+Rotate -90 1 0 0
+Hyperboloid 0.459652007 0 0 0.455260992 0 -0.00899 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.34870005 0
+Rotate -90 1 0 0
+Hyperboloid 0.455260992 0 0 0.451095015 0 -0.00908000022 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.33961999 0
+Rotate -90 1 0 0
+Hyperboloid 0.451095015 0 0 0.447214007 0 -0.00918999966 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.33043003 0
+Rotate -90 1 0 0
+Hyperboloid 0.447214007 0 0 0.443688989 0 -0.00930999964 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.32112002 0
+Rotate -90 1 0 0
+Hyperboloid 0.443688989 0 0 0.440566987 0 -0.00944000017 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.31167996 0
+Rotate -90 1 0 0
+Hyperboloid 0.440566987 0 0 0.437857002 0 -0.00956999976 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.30210996 0
+Rotate -90 1 0 0
+Hyperboloid 0.437857002 0 0 0.435552001 0 -0.00970000029 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.29241002 0
+Rotate -90 1 0 0
+Hyperboloid 0.435552001 0 0 0.43365401 0 -0.00978999957 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.28261995 0
+Rotate -90 1 0 0
+Hyperboloid 0.43365401 0 0 0.432181001 0 -0.00987999979 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.27274001 0
+Rotate -90 1 0 0
+Hyperboloid 0.432181001 0 0 0.43115899 0 -0.00994000025 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.26279998 0
+Rotate -90 1 0 0
+Hyperboloid 0.43115899 0 0 0.430602014 0 -0.00997000001 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.25283003 0
+Rotate -90 1 0 0
+Hyperboloid 0.430602014 0 0 0.430523008 0 -0.00997000001 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.24285996 0
+Rotate -90 1 0 0
+Hyperboloid 0.430523008 0 0 0.43096 0 -0.00994000025 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.23292005 0
+Rotate -90 1 0 0
+Hyperboloid 0.43096 0 0 0.431975991 0 -0.00985999964 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.22306001 0
+Rotate -90 1 0 0
+Hyperboloid 0.431975991 0 0 0.433634013 0 -0.0097500002 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.21331 0
+Rotate -90 1 0 0
+Hyperboloid 0.433634013 0 0 0.435956001 0 -0.00961999968 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.20369005 0
+Rotate -90 1 0 0
+Hyperboloid 0.435956001 0 0 0.43889001 0 -0.00947999954 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.19421005 0
+Rotate -90 1 0 0
+Hyperboloid 0.43889001 0 0 0.442348003 0 -0.00934000034 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.18487 0
+Rotate -90 1 0 0
+Hyperboloid 0.442348003 0 0 0.446249008 0 -0.0092000002 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.17567003 0
+Rotate -90 1 0 0
+Hyperboloid 0.446249008 0 0 0.450538993 0 -0.00903000031 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.16664004 0
+Rotate -90 1 0 0
+Hyperboloid 0.450538993 0 0 0.455195993 0 -0.00884999987 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.15778995 0
+Rotate -90 1 0 0
+Hyperboloid 0.455195993 0 0 0.460193008 0 -0.00863999967 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.14915001 0
+Rotate -90 1 0 0
+Hyperboloid 0.460193008 0 0 0.465483993 0 -0.00846000016 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.14068997 0
+Rotate -90 1 0 0
+Hyperboloid 0.465483993 0 0 0.471015006 0 -0.00829000026 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.13240004 0
+Rotate -90 1 0 0
+Hyperboloid 0.471015006 0 0 0.476745993 0 -0.00812000036 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.12427998 0
+Rotate -90 1 0 0
+Hyperboloid 0.476745993 0 0 0.482661992 0 -0.00795000046 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.11633003 0
+Rotate -90 1 0 0
+Hyperboloid 0.482661992 0 0 0.488779008 0 -0.00779000018 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.10854006 0
+Rotate -90 1 0 0
+Hyperboloid 0.488779008 0 0 0.495121986 0 -0.00761999981 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.10091996 0
+Rotate -90 1 0 0
+Hyperboloid 0.495121986 0 0 0.501713991 0 -0.00749000022 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.09343004 0
+Rotate -90 1 0 0
+Hyperboloid 0.501713991 0 0 0.508571029 0 -0.00738999993 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.08604002 0
+Rotate -90 1 0 0
+Hyperboloid 0.508571029 0 0 0.515699983 0 -0.00732999993 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.07870996 0
+Rotate -90 1 0 0
+Hyperboloid 0.515699983 0 0 0.523084998 0 -0.00725999987 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.07145 0
+Rotate -90 1 0 0
+Hyperboloid 0.523084998 0 0 0.530659974 0 -0.00718000019 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.06427002 0
+Rotate -90 1 0 0
+Hyperboloid 0.530659974 0 0 0.53827101 0 -0.00699000014 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.05727994 0
+Rotate -90 1 0 0
+Hyperboloid 0.53827101 0 0 0.545656979 0 -0.00669999979 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.05058002 0
+Rotate -90 1 0 0
+Hyperboloid 0.545656979 0 0 0.552461982 0 -0.00630000001 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.04428005 0
+Rotate -90 1 0 0
+Hyperboloid 0.552461982 0 0 0.558310986 0 -0.00579999993 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.03848004 0
+Rotate -90 1 0 0
+Hyperboloid 0.558310986 0 0 0.562952995 0 -0.00524999993 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.03322995 0
+Rotate -90 1 0 0
+Hyperboloid 0.562952995 0 0 0.566422999 0 -0.00478000008 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.02845001 0
+Rotate -90 1 0 0
+Hyperboloid 0.566422999 0 0 0.569145977 0 -0.00448000012 360 
+TransformEnd 
+AttributeEnd 
+AttributeBegin 
+Bxdf "PxrSurface" "zone6" "color diffuseColor" [0.0399999991 0.0299999993 0.00800000038] "float diffuseGain" [0.100000001] "color specularFaceColor" [0.699999988 0.560000002 0.219999999] "color specularEdgeColor" [0.819999993 0.680000007 0.300000012] "float specularRoughness" [0.5] "color specularIor" [1.79999995 1.79999995 1.79999995] 
+"int specularFresnelMode" [0]
+TransformBegin 
+Translate 0 1.02397001 0
+Rotate -90 1 0 0
+Hyperboloid 0.569145977 0 0 0 0 -0.0239700004 360 
+TransformEnd 
+AttributeEnd 
 TransformBegin 
 Rotate 90 1 0 0
-Disk 0 0 360 
+Disk 0 0.399753988 360 
 TransformEnd 
 AttributeEnd 
 WorldEnd 
