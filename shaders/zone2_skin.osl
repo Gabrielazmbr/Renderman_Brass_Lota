@@ -1,9 +1,51 @@
 shader zone2_skin(
     float grooveAmp = 0.005,
-    output vector dPdisp = 0
+    output vector dPdisp = 0,
+    output color resultSpecular = 0
 )
 {
     float angle = u * 2.0 * M_PI;
     float ridge = sin(angle * 24.0) * grooveAmp;
-    dPdisp = ridge * N;
+    dPdisp = -ridge * N;
+
+    point Pw = transform("world", P);
+
+    // ── Fine directional scratches
+    float scratchAngle = atan2(Pw[2], Pw[0]);
+    float scratch = sin(scratchAngle * 300.0) * 0.5 + 0.5;
+    scratch += sin(scratchAngle * 187.0) * 0.3;
+    scratch = clamp(scratch, 0.0, 1.0);
+    float grain = scratch * 0.5;
+
+    // ── Cylindrical coords for hash stains
+    float ang = atan2(Pw[2], Pw[0]) / M_PI;
+    float radius = sqrt(Pw[0]*Pw[0] + Pw[2]*Pw[2]);
+    point Pcyl = point(ang * 4.0, Pw[1] * 2.0, radius);
+
+    float cell1 = noise("hash", Pcyl * 2.0);
+    float cell2 = noise("hash", Pcyl * 5.0);
+    float cell3 = noise("hash", Pcyl * 10.0);
+
+    float bigStains   = clamp((cell1 - 0.55) * 4.0, 0.0, 1.0);
+    float medStains   = clamp((cell2 - 0.60) * 3.0, 0.0, 1.0);
+    float smallStains = clamp((cell3 - 0.65) * 2.0, 0.0, 1.0);
+
+    float vary = noise("perlin", Pw * 3.0);
+    vary = clamp(vary * 1.5, 0.2, 1.0);
+
+    float darkStain = clamp((bigStains * 1.0 + medStains * 0.6 + smallStains * 0.3) * vary, 0.0, 1.0);
+
+    // ── Vertical streaks near top border — dirt running down
+    float t2 = clamp((Pw[1] - (-2.5)) / (0.558 - (-2.5)), 0.0, 1.0);
+    float topEdge2 = clamp((t2 - 0.75) * 8.0, 0.0, 1.0);
+
+    // Vertical streaks using X and Z position
+    float streak = sin(ang * 800.0) * 0.5 + 0.5;
+    streak += sin(ang * 548.0) * 0.3;
+    streak *= noise("perlin", point(ang * 5.0, Pw[1] * 2.0, radius)) * 0.6 + 0.5;
+    streak = clamp(streak, 0.0, 1.0);
+
+    float darkPatch = clamp(darkStain + streak * topEdge2 * 0.4, 0.0, 1.0);
+
+    resultSpecular = mix(color(0.45, 0.38, 0.18), color(0.12, 0.10, 0.04), darkPatch);
 }

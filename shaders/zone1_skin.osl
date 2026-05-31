@@ -1,0 +1,40 @@
+shader zone1_skin(
+    output color resultSpecular = 0
+)
+{
+    point Pw = transform("world", P);
+
+    // ── Fine grain
+    float grain = 0.0;
+    grain += noise("perlin", Pw * 40.0) * 0.50;
+    grain += noise("perlin", Pw * 100.0) * 0.50;
+    grain = clamp(grain, 0.0, 1.0);
+
+    // ── Cylindrical coords
+    float angle = atan2(Pw[2], Pw[0]) / M_PI;
+    float radius = sqrt(Pw[0]*Pw[0] + Pw[2]*Pw[2]);
+    point Pcyl = point(angle * 4.0, Pw[1] * 2.0, radius);
+
+    float cell1 = noise("hash", Pcyl * 2.0);
+    float cell2 = noise("hash", Pcyl * 5.0);
+    float cell3 = noise("hash", Pcyl * 10.0);
+
+    float bigStains   = clamp((cell1 - 0.55) * 4.0, 0.0, 1.0);
+    float medStains   = clamp((cell2 - 0.60) * 3.0, 0.0, 1.0);
+    float smallStains = clamp((cell3 - 0.65) * 2.0, 0.0, 1.0);
+
+    float vary = noise("perlin", Pw * 3.0);
+    vary = clamp(vary * 1.5, 0.2, 1.0);
+
+    float darkStain = clamp((bigStains * 1.0 + medStains * 0.6 + smallStains * 0.3) * vary, 0.0, 1.0);
+    float darkPatch = clamp(grain * 0.15 + darkStain, 0.0, 1.0);
+
+    // ── Top border darkening
+    float t2 = clamp((Pw[1] - (-2.5)) / ((-1.82) - (-2.5)), 0.0, 1.0);
+    float topEdge2 = clamp((t2 - 0.80) * 6.0, 0.0, 1.0);
+    float borderNoise2 = noise("perlin", Pw * 8.0) * 0.5 + 0.5;
+    float border2 = topEdge2 * borderNoise2;
+    darkPatch = clamp(darkPatch + border2 * 2.5, 0.0, 1.0);
+
+    resultSpecular = mix(color(0.45, 0.38, 0.18), color(0.12, 0.10, 0.04), darkPatch);
+}

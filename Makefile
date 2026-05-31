@@ -14,8 +14,13 @@ RMAN_ENV=RMANTREE=$(RMANTREE) \
 RUN=arch -x86_64
 
 compile_shaders:
+	$(RMAN_ENV) $(RUN) $(RMANTREE)/bin/oslc shaders/zone1_skin.osl -o shaders/zone1_skin.oso
 	$(RMAN_ENV) $(RUN) $(RMANTREE)/bin/oslc shaders/zone2_skin.osl -o shaders/zone2_skin.oso
+	$(RMAN_ENV) $(RUN) $(RMANTREE)/bin/oslc shaders/zone3_skin.osl -o shaders/zone3_skin.oso
 	$(RMAN_ENV) $(RUN) $(RMANTREE)/bin/oslc shaders/zone4_skin.osl -o shaders/zone4_skin.oso
+	$(RMAN_ENV) $(RUN) $(RMANTREE)/bin/oslc shaders/zone5_skin.osl -o shaders/zone5_skin.oso
+	$(RMAN_ENV) $(RUN) $(RMANTREE)/bin/oslc shaders/zone6_skin.osl -o shaders/zone6_skin.oso
+	$(RMAN_ENV) $(RUN) $(RMANTREE)/bin/oslc shaders/ground_wood.osl -o shaders/ground_wood.oso
 
 generate: compile_shaders
 	$(RMAN_ENV) $(RUN) $(PYTHON) $(SCRIPT)

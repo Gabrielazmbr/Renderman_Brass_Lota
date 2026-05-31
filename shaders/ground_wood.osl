@@ -1,0 +1,14 @@
+shader ground_wood(
+    string albedofile = "",
+    string roughfile = "",
+    float tileScale = 17.0,
+    output color resultRGB = 0,
+    output float resultRough = 0
+)
+{
+    float uu = u * tileScale;
+    float vv = v * tileScale;
+
+    resultRGB = (color)texture(albedofile, uu, vv);
+    resultRough = (float)texture(roughfile, uu, vv, "firstchannel", 0);
+}

@@ -1,0 +1,29 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.13.0.@PROJECT_VERSION_TWEAK@"dev"
+# options: -o shaders/ground_wood.oso
+shader ground_wood
+param	string	albedofile	""		%read{2,2} %write{2147483647,-1}
+param	string	roughfile	""		%read{3,3} %write{2147483647,-1}
+param	float	tileScale	17		%read{0,1} %write{2147483647,-1} %derivs
+oparam	color	resultRGB	0 0 0		%read{2147483647,-1} %write{2,2}
+oparam	float	resultRough	0		%read{2147483647,-1} %write{3,3}
+global	float	u	%read{0,0} %write{2147483647,-1} %derivs
+global	float	v	%read{1,1} %write{2147483647,-1} %derivs
+local	float	uu	%read{2,3} %write{0,0} %derivs
+local	float	vv	%read{2,3} %write{1,1} %derivs
+const	string	$const1	"firstchannel"		%read{3,3} %write{2147483647,-1}
+const	int	$const2	0		%read{3,3} %write{2147483647,-1}
+code ___main___
+# shaders/ground_wood.osl:9
+#     float uu = u * tileScale;
+	mul		uu u tileScale 	%filename{"shaders/ground_wood.osl"} %line{9} %argrw{"wrr"}
+# shaders/ground_wood.osl:10
+#     float vv = v * tileScale;
+	mul		vv v tileScale 	%line{10} %argrw{"wrr"}
+# shaders/ground_wood.osl:12
+#     resultRGB = (color)texture(albedofile, uu, vv);
+	texture		resultRGB albedofile uu vv 	%line{12} %argrw{"wrrr"} %argderivs{2,3}
+# shaders/ground_wood.osl:13
+#     resultRough = (float)texture(roughfile, uu, vv, "firstchannel", 0);
+	texture		resultRough roughfile uu vv $const1 $const2 	%line{13} %argrw{"wrrrrr"} %argderivs{2,3}
+	end

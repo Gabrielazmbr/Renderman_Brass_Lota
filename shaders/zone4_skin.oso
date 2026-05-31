@@ -2,16 +2,21 @@ OpenShadingLanguage 1.00
 # Compiled by oslc 1.13.0.@PROJECT_VERSION_TWEAK@"dev"
 # options: -o shaders/zone4_skin.oso
 shader zone4_skin
-param	string	texturefile	""		%read{15,15} %write{2147483647,-1}
+param	string	texturefile	""		%read{2147483647,-1} %write{2147483647,-1}
+param	string	dispfile	""		%read{15,15} %write{2147483647,-1}
+param	float	dispAmp	0.00400000019		%read{28,28} %write{2147483647,-1}
 oparam	color	resultRGB	0 0 0		%read{2147483647,-1} %write{22,22}
 oparam	float	resultRough	0		%read{2147483647,-1} %write{25,25}
+oparam	color	resultSpecular	0 0 0		%read{2147483647,-1} %write{26,26}
+oparam	vector	dPdisp	0 0 0		%read{2147483647,-1} %write{30,30}
 global	point	P	%read{1,1} %write{2147483647,-1} %derivs
+global	normal	N	%read{29,29} %write{2147483647,-1}
 local	point	Pw	%read{2,12} %write{1,1} %derivs
 local	float	angle	%read{6,6} %write{5,5} %derivs
 local	float	uu	%read{8,15} %write{7,11} %derivs
 local	float	vv	%read{13,15} %write{12,14} %derivs
-local	color	texVal	%read{16,19} %write{15,15}
-local	float	grey	%read{23,23} %write{21,21}
+local	color	dispVal	%read{16,19} %write{15,15}
+local	float	grey	%read{23,27} %write{21,21}
 const	string	$const1	"world"		%read{1,1} %write{2147483647,-1}
 const	string	$const2	"transform"		%read{0,0} %write{2147483647,-1}
 const	string	$const3	"common"		%read{1,1} %write{2147483647,-1}
@@ -22,7 +27,7 @@ const	int	$const5	2		%read{4,19} %write{2147483647,-1}
 temp	float	$tmp3	%read{5,5} %write{4,4} %derivs
 const	float	$const6	6.28318548		%read{6,6} %write{2147483647,-1}
 temp	float	$tmp4	%read{7,7} %write{6,6} %derivs
-const	float	$const7	0.5		%read{7,7} %write{2147483647,-1}
+const	float	$const7	0.5		%read{7,27} %write{2147483647,-1}
 const	float	$const8	2		%read{8,8} %write{2147483647,-1}
 const	float	$const9	0.400000006		%read{9,9} %write{2147483647,-1}
 const	float	$const10	1		%read{10,23} %write{2147483647,-1}
@@ -36,64 +41,78 @@ temp	float	$tmp8	%read{20,20} %write{18,18}
 temp	float	$tmp9	%read{20,20} %write{19,19}
 temp	float	$tmp10	%read{21,21} %write{20,20}
 const	float	$const14	3		%read{21,21} %write{2147483647,-1}
-const	color	$const15	0.0399999991 0.0299999993 0.00800000038		%read{22,22} %write{2147483647,-1}
-const	float	$const16	0.25		%read{25,25} %write{2147483647,-1}
+const	color	$const15	0.0500000007 0.0379999988 0.0120000001		%read{22,22} %write{2147483647,-1}
+const	float	$const16	0.600000024		%read{25,25} %write{2147483647,-1}
 temp	float	$tmp11	%read{24,24} %write{23,23}
-const	float	$const17	0.449999988		%read{24,24} %write{2147483647,-1}
+const	float	$const17	0.349999994		%read{24,24} %write{2147483647,-1}
 temp	float	$tmp12	%read{25,25} %write{24,24}
+const	color	$const18	0.0199999996 0.0199999996 0.00999999978		%read{26,26} %write{2147483647,-1}
+const	color	$const19	0.300000012 0.25 0.150000006		%read{26,26} %write{2147483647,-1}
+temp	float	$tmp15	%read{28,28} %write{27,27}
+temp	float	$tmp16	%read{30,30} %write{28,28}
+temp	vector	$tmp17	%read{30,30} %write{29,29}
 code ___main___
-# shaders/zone4_skin.osl:7
+# shaders/zone4_skin.osl:11
 #     point Pw = transform("world", P);
-	functioncall	$const2 2 	%filename{"shaders/zone4_skin.osl"} %line{7} %argrw{"r"}
+	functioncall	$const2 2 	%filename{"shaders/zone4_skin.osl"} %line{11} %argrw{"r"}
 # /Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h:263
 # point  transform (string to, point p)  { return transform("common",to,p); }
 	transform	Pw $const3 $const1 P 	%filename{"/Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h"} %line{263} %argrw{"wrrr"}
-# shaders/zone4_skin.osl:8
+# shaders/zone4_skin.osl:12
 #     float angle = atan2(-Pw[0], Pw[2]);
-	compref		$tmp1 Pw $const4 	%filename{"shaders/zone4_skin.osl"} %line{8} %argrw{"wrr"}
+	compref		$tmp1 Pw $const4 	%filename{"shaders/zone4_skin.osl"} %line{12} %argrw{"wrr"}
 	neg		$tmp2 $tmp1 	%argrw{"wr"}
 	compref		$tmp3 Pw $const5 	%argrw{"wrr"}
 	atan2		angle $tmp2 $tmp3 	%argrw{"wrr"}
-# shaders/zone4_skin.osl:9
-#     float uu = angle / (2.0 * M_PI) + 0.5;
-	div		$tmp4 angle $const6 	%line{9} %argrw{"wrr"}
-	add		uu $tmp4 $const7 	%argrw{"wrr"}
-# shaders/zone4_skin.osl:10
-#     uu *= 2.0;
-	mul		uu uu $const8 	%line{10} %argrw{"wrr"}
-# shaders/zone4_skin.osl:11
-#     uu += 0.4;
-	add		uu uu $const9 	%line{11} %argrw{"wrr"}
-# shaders/zone4_skin.osl:12
-#     uu = fmod(uu + 1.0, 1.0);
-	add		$tmp5 uu $const10 	%line{12} %argrw{"wrr"}
-	fmod		uu $tmp5 $const10 	%argrw{"wrr"}
 # shaders/zone4_skin.osl:13
-#     float vv = Pw[1];
-	compref		vv Pw $const11 	%line{13} %argrw{"wrr"}
+#     float uu = angle / (2.0 * M_PI) + 0.5;
+	div		$tmp4 angle $const6 	%line{13} %argrw{"wrr"}
+	add		uu $tmp4 $const7 	%argrw{"wrr"}
 # shaders/zone4_skin.osl:14
-#     vv *= -0.1;
-	mul		vv vv $const12 	%line{14} %argrw{"wrr"}
+#     uu *= 2.0;
+	mul		uu uu $const8 	%line{14} %argrw{"wrr"}
 # shaders/zone4_skin.osl:15
-#     vv += 0.01;
-	add		vv vv $const13 	%line{15} %argrw{"wrr"}
+#     uu += 0.4;
+	add		uu uu $const9 	%line{15} %argrw{"wrr"}
+# shaders/zone4_skin.osl:16
+#     uu = fmod(uu + 1.0, 1.0);
+	add		$tmp5 uu $const10 	%line{16} %argrw{"wrr"}
+	fmod		uu $tmp5 $const10 	%argrw{"wrr"}
 # shaders/zone4_skin.osl:17
-#     color texVal = (color)texture(texturefile, uu, vv);
-	texture		texVal texturefile uu vv 	%line{17} %argrw{"wrrr"} %argderivs{2,3}
+#     float vv = Pw[1];
+	compref		vv Pw $const11 	%line{17} %argrw{"wrr"}
 # shaders/zone4_skin.osl:18
-#     float grey = (texVal[0] + texVal[1] + texVal[2]) / 3.0;
-	compref		$tmp6 texVal $const4 	%line{18} %argrw{"wrr"}
-	compref		$tmp7 texVal $const11 	%argrw{"wrr"}
+#     vv *= -0.1;
+	mul		vv vv $const12 	%line{18} %argrw{"wrr"}
+# shaders/zone4_skin.osl:19
+#     vv += 0.01;
+	add		vv vv $const13 	%line{19} %argrw{"wrr"}
+# shaders/zone4_skin.osl:21
+#     color dispVal = (color)texture(dispfile, uu, vv);
+	texture		dispVal dispfile uu vv 	%line{21} %argrw{"wrrr"} %argderivs{2,3}
+# shaders/zone4_skin.osl:22
+#     float grey = (dispVal[0] + dispVal[1] + dispVal[2]) / 3.0;
+	compref		$tmp6 dispVal $const4 	%line{22} %argrw{"wrr"}
+	compref		$tmp7 dispVal $const11 	%argrw{"wrr"}
 	add		$tmp8 $tmp6 $tmp7 	%argrw{"wrr"}
-	compref		$tmp9 texVal $const5 	%argrw{"wrr"}
+	compref		$tmp9 dispVal $const5 	%argrw{"wrr"}
 	add		$tmp10 $tmp8 $tmp9 	%argrw{"wrr"}
 	div		grey $tmp10 $const14 	%argrw{"wrr"}
-# shaders/zone4_skin.osl:21
-#     resultRGB = color(0.04, 0.03, 0.008);  // dark brass diffuse
-	assign		resultRGB $const15 	%line{21} %argrw{"wr"}
-# shaders/zone4_skin.osl:22
-#     resultRough = 0.25 + (1.0 - grey) * 0.45;
-	sub		$tmp11 $const10 grey 	%line{22} %argrw{"wrr"}
+# shaders/zone4_skin.osl:24
+#     resultRGB = color(0.05, 0.038, 0.012);
+	assign		resultRGB $const15 	%line{24} %argrw{"wr"}
+# shaders/zone4_skin.osl:25
+#     resultRough = 0.60 + (1.0 - grey) * 0.35;
+	sub		$tmp11 $const10 grey 	%line{25} %argrw{"wrr"}
 	mul		$tmp12 $tmp11 $const17 	%argrw{"wrr"}
 	add		resultRough $const16 $tmp12 	%argrw{"wrr"}
+# shaders/zone4_skin.osl:26
+#     resultSpecular = mix(color(0.02, 0.02, 0.01), color(0.30, 0.25, 0.15), grey);
+	mix		resultSpecular $const18 $const19 grey 	%line{26} %argrw{"wrrr"}
+# shaders/zone4_skin.osl:27
+#     dPdisp = (grey - 0.5) * dispAmp * vector(N);
+	sub		$tmp15 grey $const7 	%line{27} %argrw{"wrr"}
+	mul		$tmp16 $tmp15 dispAmp 	%argrw{"wrr"}
+	assign		$tmp17 N 	%argrw{"wr"}
+	mul		dPdisp $tmp16 $tmp17 	%argrw{"wrr"}
 	end

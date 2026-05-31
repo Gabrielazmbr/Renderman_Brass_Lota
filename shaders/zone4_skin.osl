@@ -1,7 +1,11 @@
 shader zone4_skin(
     string texturefile = "",
+    string dispfile = "",
+    float dispAmp = 0.004,
     output color resultRGB = 0,
-    output float resultRough = 0
+    output float resultRough = 0,
+    output color resultSpecular = 0,
+    output vector dPdisp = 0
 )
 {
     point Pw = transform("world", P);
@@ -14,10 +18,11 @@ shader zone4_skin(
     vv *= -0.1;
     vv += 0.01;
 
-    color texVal = (color)texture(texturefile, uu, vv);
-    float grey = (texVal[0] + texVal[1] + texVal[2]) / 3.0;
+    color dispVal = (color)texture(dispfile, uu, vv);
+    float grey = (dispVal[0] + dispVal[1] + dispVal[2]) / 3.0;
 
-    // Dark areas = rougher, light areas = smoother
-    resultRGB = color(0.04, 0.03, 0.008);  // dark brass diffuse
-    resultRough = 0.25 + (1.0 - grey) * 0.45;
+    resultRGB = color(0.05, 0.038, 0.012);
+    resultRough = 0.60 + (1.0 - grey) * 0.35;
+    resultSpecular = mix(color(0.02, 0.02, 0.01), color(0.30, 0.25, 0.15), grey);
+    dPdisp = (grey - 0.5) * dispAmp * vector(N);
 }

@@ -3,28 +3,333 @@ OpenShadingLanguage 1.00
 # options: -o shaders/zone2_skin.oso
 shader zone2_skin
 param	float	grooveAmp	0.00499999989		%read{4,4} %write{2147483647,-1}
-oparam	vector	dPdisp	0 0 0		%read{2147483647,-1} %write{5,5}
-global	normal	N	%read{5,5} %write{2147483647,-1}
+oparam	vector	dPdisp	0 0 0		%read{2147483647,-1} %write{6,6}
+oparam	color	resultSpecular	0 0 0		%read{2147483647,-1} %write{112,112}
+global	point	P	%read{8,8} %write{2147483647,-1}
+global	normal	N	%read{6,6} %write{2147483647,-1}
 global	float	u	%read{0,0} %write{2147483647,-1}
 local	float	angle	%read{2,2} %write{1,1}
 local	float	ridge	%read{5,5} %write{4,4}
-const	float	$const1	2		%read{0,0} %write{2147483647,-1}
+local	point	Pw	%read{9,96} %write{8,8}
+local	float	scratchAngle	%read{12,16} %write{11,11}
+local	float	scratch	%read{19,23} %write{15,22}
+local	float	grain	%read{2147483647,-1} %write{23,23}
+local	float	ang	%read{36,95} %write{27,27}
+local	float	radius	%read{39,98} %write{35,35}
+local	point	Pcyl	%read{40,44} %write{39,39}
+local	float	cell1	%read{46,46} %write{41,41}
+local	float	cell2	%read{51,51} %write{43,43}
+local	float	cell3	%read{56,56} %write{45,45}
+local	float	bigStains	%read{67,67} %write{50,50}
+local	float	medStains	%read{68,68} %write{55,55}
+local	float	smallStains	%read{70,70} %write{60,60}
+local	float	vary	%read{63,72} %write{62,66}
+local	float	darkStain	%read{108,108} %write{75,75}
+local	float	t2	%read{82,82} %write{81,81}
+local	float	topEdge2	%read{106,106} %write{86,86}
+local	float	streak	%read{94,106} %write{90,105}
+local	float	darkPatch	%read{112,112} %write{111,111}
+const	float	$const1	2		%read{0,97} %write{2147483647,-1}
 temp	float	$tmp1	%read{1,1} %write{0,0}
-const	float	$const2	3.14159274		%read{1,1} %write{2147483647,-1}
+const	float	$const2	3.14159274		%read{1,27} %write{2147483647,-1}
 temp	float	$tmp2	%read{4,4} %write{3,3}
 const	float	$const3	24		%read{2,2} %write{2147483647,-1}
 temp	float	$tmp3	%read{3,3} %write{2,2}
+temp	float	$tmp4	%read{6,6} %write{5,5}
+const	string	$const4	"world"		%read{8,8} %write{2147483647,-1}
+const	string	$const5	"transform"		%read{7,7} %write{2147483647,-1}
+const	string	$const6	"common"		%read{8,8} %write{2147483647,-1}
+const	int	$const7	2		%read{9,32} %write{2147483647,-1}
+temp	float	$tmp5	%read{11,11} %write{9,9}
+const	int	$const8	0		%read{10,29} %write{2147483647,-1}
+temp	float	$tmp6	%read{11,11} %write{10,10}
+temp	float	$tmp7	%read{14,14} %write{13,13}
+const	float	$const9	300		%read{12,12} %write{2147483647,-1}
+temp	float	$tmp8	%read{13,13} %write{12,12}
+const	float	$const10	0.5		%read{14,101} %write{2147483647,-1}
+temp	float	$tmp9	%read{15,15} %write{14,14}
+temp	float	$tmp10	%read{18,18} %write{17,17}
+const	float	$const11	187		%read{16,16} %write{2147483647,-1}
+temp	float	$tmp11	%read{17,17} %write{16,16}
+const	float	$const12	0.300000012		%read{18,93} %write{2147483647,-1}
+temp	float	$tmp12	%read{19,19} %write{18,18}
+const	float	$const13	0		%read{22,111} %write{2147483647,-1}
+const	float	$const14	1		%read{21,110} %write{2147483647,-1}
+const	string	$const15	"clamp"		%read{20,109} %write{2147483647,-1}
+temp	float	$tmp13	%read{22,22} %write{21,21}
+temp	float	$tmp14	%read{27,27} %write{26,26}
+temp	float	$tmp15	%read{26,26} %write{24,24}
+temp	float	$tmp16	%read{26,26} %write{25,25}
+temp	float	$tmp17	%read{30,30} %write{28,28}
+temp	float	$tmp18	%read{30,30} %write{29,29}
+temp	float	$tmp19	%read{34,34} %write{30,30}
+temp	float	$tmp20	%read{33,33} %write{31,31}
+temp	float	$tmp21	%read{33,33} %write{32,32}
+temp	float	$tmp22	%read{34,34} %write{33,33}
+temp	float	$tmp23	%read{35,35} %write{34,34}
+const	float	$const16	4		%read{36,47} %write{2147483647,-1}
+temp	float	$tmp24	%read{39,39} %write{36,36}
+const	int	$const17	1		%read{37,96} %write{2147483647,-1}
+temp	float	$tmp25	%read{38,38} %write{37,37}
+temp	float	$tmp26	%read{39,39} %write{38,38}
+const	string	$const18	"hash"		%read{41,45} %write{2147483647,-1}
+temp	point	$tmp27	%read{41,41} %write{40,40}
+const	float	$const19	5		%read{42,95} %write{2147483647,-1}
+temp	point	$tmp28	%read{43,43} %write{42,42}
+const	float	$const20	10		%read{44,44} %write{2147483647,-1}
+temp	point	$tmp29	%read{45,45} %write{44,44}
+const	float	$const21	0.550000012		%read{46,46} %write{2147483647,-1}
+temp	float	$tmp30	%read{47,47} %write{46,46}
+temp	float	$tmp31	%read{49,49} %write{47,47}
+temp	float	$tmp32	%read{50,50} %write{49,49}
+const	float	$const22	0.600000024		%read{51,100} %write{2147483647,-1}
+temp	float	$tmp33	%read{52,52} %write{51,51}
+const	float	$const23	3		%read{52,61} %write{2147483647,-1}
+temp	float	$tmp34	%read{54,54} %write{52,52}
+temp	float	$tmp35	%read{55,55} %write{54,54}
+const	float	$const24	0.649999976		%read{56,56} %write{2147483647,-1}
+temp	float	$tmp36	%read{57,57} %write{56,56}
+temp	float	$tmp37	%read{59,59} %write{57,57}
+temp	float	$tmp38	%read{60,60} %write{59,59}
+const	string	$const25	"perlin"		%read{62,99} %write{2147483647,-1}
+temp	point	$tmp39	%read{62,62} %write{61,61}
+const	float	$const26	1.5		%read{63,63} %write{2147483647,-1}
+temp	float	$tmp40	%read{65,65} %write{63,63}
+const	float	$const27	0.200000003		%read{66,66} %write{2147483647,-1}
+temp	float	$tmp41	%read{66,66} %write{65,65}
+temp	float	$tmp42	%read{69,69} %write{67,67}
+temp	float	$tmp43	%read{69,69} %write{68,68}
+temp	float	$tmp44	%read{71,71} %write{69,69}
+temp	float	$tmp45	%read{71,71} %write{70,70}
+temp	float	$tmp46	%read{72,72} %write{71,71}
+temp	float	$tmp47	%read{74,74} %write{72,72}
+temp	float	$tmp48	%read{75,75} %write{74,74}
+temp	float	$tmp49	%read{77,77} %write{76,76}
+const	float	$const28	-2.5		%read{77,77} %write{2147483647,-1}
+temp	float	$tmp50	%read{78,78} %write{77,77}
+const	float	$const29	3.05800009		%read{78,78} %write{2147483647,-1}
+temp	float	$tmp51	%read{80,80} %write{78,78}
+temp	float	$tmp52	%read{81,81} %write{80,80}
+const	float	$const30	0.75		%read{82,82} %write{2147483647,-1}
+temp	float	$tmp53	%read{83,83} %write{82,82}
+const	float	$const31	8		%read{83,83} %write{2147483647,-1}
+temp	float	$tmp54	%read{85,85} %write{83,83}
+temp	float	$tmp55	%read{86,86} %write{85,85}
+temp	float	$tmp56	%read{89,89} %write{88,88}
+const	float	$const32	800		%read{87,87} %write{2147483647,-1}
+temp	float	$tmp57	%read{88,88} %write{87,87}
+temp	float	$tmp58	%read{90,90} %write{89,89}
+temp	float	$tmp59	%read{93,93} %write{92,92}
+const	float	$const33	548		%read{91,91} %write{2147483647,-1}
+temp	float	$tmp60	%read{92,92} %write{91,91}
+temp	float	$tmp61	%read{94,94} %write{93,93}
+temp	float	$tmp62	%read{100,100} %write{99,99}
+temp	point	$tmp63	%read{99,99} %write{98,98}
+temp	float	$tmp64	%read{98,98} %write{95,95}
+temp	float	$tmp65	%read{97,97} %write{96,96}
+temp	float	$tmp66	%read{98,98} %write{97,97}
+temp	float	$tmp67	%read{101,101} %write{100,100}
+temp	float	$tmp68	%read{102,102} %write{101,101}
+temp	float	$tmp69	%read{105,105} %write{104,104}
+temp	float	$tmp70	%read{107,107} %write{106,106}
+const	float	$const34	0.400000006		%read{107,107} %write{2147483647,-1}
+temp	float	$tmp71	%read{108,108} %write{107,107}
+temp	float	$tmp72	%read{110,110} %write{108,108}
+temp	float	$tmp73	%read{111,111} %write{110,110}
+const	color	$const35	0.449999988 0.379999995 0.180000007		%read{112,112} %write{2147483647,-1}
+const	color	$const36	0.119999997 0.100000001 0.0399999991		%read{112,112} %write{2147483647,-1}
 code ___main___
-# shaders/zone2_skin.osl:6
-#     float angle = u * 2.0 * M_PI;
-	mul		$tmp1 u $const1 	%filename{"shaders/zone2_skin.osl"} %line{6} %argrw{"wrr"}
-	mul		angle $tmp1 $const2 	%argrw{"wrr"}
 # shaders/zone2_skin.osl:7
+#     float angle = u * 2.0 * M_PI;
+	mul		$tmp1 u $const1 	%filename{"shaders/zone2_skin.osl"} %line{7} %argrw{"wrr"}
+	mul		angle $tmp1 $const2 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:8
 #     float ridge = sin(angle * 24.0) * grooveAmp;
-	mul		$tmp3 angle $const3 	%line{7} %argrw{"wrr"}
+	mul		$tmp3 angle $const3 	%line{8} %argrw{"wrr"}
 	sin		$tmp2 $tmp3 	%argrw{"wr"}
 	mul		ridge $tmp2 grooveAmp 	%argrw{"wrr"}
-# shaders/zone2_skin.osl:8
-#     dPdisp = ridge * N;
-	mul		dPdisp ridge N 	%line{8} %argrw{"wrr"}
+# shaders/zone2_skin.osl:9
+#     dPdisp = -ridge * N;
+	neg		$tmp4 ridge 	%line{9} %argrw{"wr"}
+	mul		dPdisp $tmp4 N 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:11
+#     point Pw = transform("world", P);
+	functioncall	$const5 9 	%line{11} %argrw{"r"}
+# /Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h:263
+# point  transform (string to, point p)  { return transform("common",to,p); }
+	transform	Pw $const6 $const4 P 	%filename{"/Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h"} %line{263} %argrw{"wrrr"}
+# shaders/zone2_skin.osl:14
+#     float scratchAngle = atan2(Pw[2], Pw[0]);
+	compref		$tmp5 Pw $const7 	%filename{"shaders/zone2_skin.osl"} %line{14} %argrw{"wrr"}
+	compref		$tmp6 Pw $const8 	%argrw{"wrr"}
+	atan2		scratchAngle $tmp5 $tmp6 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:15
+#     float scratch = sin(scratchAngle * 300.0) * 0.5 + 0.5;
+	mul		$tmp8 scratchAngle $const9 	%line{15} %argrw{"wrr"}
+	sin		$tmp7 $tmp8 	%argrw{"wr"}
+	mul		$tmp9 $tmp7 $const10 	%argrw{"wrr"}
+	add		scratch $tmp9 $const10 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:16
+#     scratch += sin(scratchAngle * 187.0) * 0.3;
+	mul		$tmp11 scratchAngle $const11 	%line{16} %argrw{"wrr"}
+	sin		$tmp10 $tmp11 	%argrw{"wr"}
+	mul		$tmp12 $tmp10 $const12 	%argrw{"wrr"}
+	add		scratch scratch $tmp12 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:17
+#     scratch = clamp(scratch, 0.0, 1.0);
+	functioncall	$const15 23 	%line{17} %argrw{"r"}
+# /Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h:141
+# float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
+	min		$tmp13 scratch $const14 	%filename{"/Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h"} %line{141} %argrw{"wrr"}
+	max		scratch $tmp13 $const13 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:18
+#     float grain = scratch * 0.5;
+	mul		grain scratch $const10 	%filename{"shaders/zone2_skin.osl"} %line{18} %argrw{"wrr"}
+# shaders/zone2_skin.osl:21
+#     float ang = atan2(Pw[2], Pw[0]) / M_PI;
+	compref		$tmp15 Pw $const7 	%line{21} %argrw{"wrr"}
+	compref		$tmp16 Pw $const8 	%argrw{"wrr"}
+	atan2		$tmp14 $tmp15 $tmp16 	%argrw{"wrr"}
+	div		ang $tmp14 $const2 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:22
+#     float radius = sqrt(Pw[0]*Pw[0] + Pw[2]*Pw[2]);
+	compref		$tmp17 Pw $const8 	%line{22} %argrw{"wrr"}
+	compref		$tmp18 Pw $const8 	%argrw{"wrr"}
+	mul		$tmp19 $tmp17 $tmp18 	%argrw{"wrr"}
+	compref		$tmp20 Pw $const7 	%argrw{"wrr"}
+	compref		$tmp21 Pw $const7 	%argrw{"wrr"}
+	mul		$tmp22 $tmp20 $tmp21 	%argrw{"wrr"}
+	add		$tmp23 $tmp19 $tmp22 	%argrw{"wrr"}
+	sqrt		radius $tmp23 	%argrw{"wr"}
+# shaders/zone2_skin.osl:23
+#     point Pcyl = point(ang * 4.0, Pw[1] * 2.0, radius);
+	mul		$tmp24 ang $const16 	%line{23} %argrw{"wrr"}
+	compref		$tmp25 Pw $const17 	%argrw{"wrr"}
+	mul		$tmp26 $tmp25 $const1 	%argrw{"wrr"}
+	point		Pcyl $tmp24 $tmp26 radius 	%argrw{"wrrr"}
+# shaders/zone2_skin.osl:25
+#     float cell1 = noise("hash", Pcyl * 2.0);
+	mul		$tmp27 Pcyl $const1 	%line{25} %argrw{"wrr"}
+	noise		cell1 $const18 $tmp27 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:26
+#     float cell2 = noise("hash", Pcyl * 5.0);
+	mul		$tmp28 Pcyl $const19 	%line{26} %argrw{"wrr"}
+	noise		cell2 $const18 $tmp28 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:27
+#     float cell3 = noise("hash", Pcyl * 10.0);
+	mul		$tmp29 Pcyl $const20 	%line{27} %argrw{"wrr"}
+	noise		cell3 $const18 $tmp29 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:29
+#     float bigStains   = clamp((cell1 - 0.55) * 4.0, 0.0, 1.0);
+	sub		$tmp30 cell1 $const21 	%line{29} %argrw{"wrr"}
+	mul		$tmp31 $tmp30 $const16 	%argrw{"wrr"}
+	functioncall	$const15 51 	%argrw{"r"}
+# /Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h:141
+# float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
+	min		$tmp32 $tmp31 $const14 	%filename{"/Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h"} %line{141} %argrw{"wrr"}
+	max		bigStains $tmp32 $const13 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:30
+#     float medStains   = clamp((cell2 - 0.60) * 3.0, 0.0, 1.0);
+	sub		$tmp33 cell2 $const22 	%filename{"shaders/zone2_skin.osl"} %line{30} %argrw{"wrr"}
+	mul		$tmp34 $tmp33 $const23 	%argrw{"wrr"}
+	functioncall	$const15 56 	%argrw{"r"}
+# /Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h:141
+# float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
+	min		$tmp35 $tmp34 $const14 	%filename{"/Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h"} %line{141} %argrw{"wrr"}
+	max		medStains $tmp35 $const13 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:31
+#     float smallStains = clamp((cell3 - 0.65) * 2.0, 0.0, 1.0);
+	sub		$tmp36 cell3 $const24 	%filename{"shaders/zone2_skin.osl"} %line{31} %argrw{"wrr"}
+	mul		$tmp37 $tmp36 $const1 	%argrw{"wrr"}
+	functioncall	$const15 61 	%argrw{"r"}
+# /Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h:141
+# float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
+	min		$tmp38 $tmp37 $const14 	%filename{"/Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h"} %line{141} %argrw{"wrr"}
+	max		smallStains $tmp38 $const13 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:33
+#     float vary = noise("perlin", Pw * 3.0);
+	mul		$tmp39 Pw $const23 	%filename{"shaders/zone2_skin.osl"} %line{33} %argrw{"wrr"}
+	noise		vary $const25 $tmp39 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:34
+#     vary = clamp(vary * 1.5, 0.2, 1.0);
+	mul		$tmp40 vary $const26 	%line{34} %argrw{"wrr"}
+	functioncall	$const15 67 	%argrw{"r"}
+# /Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h:141
+# float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
+	min		$tmp41 $tmp40 $const14 	%filename{"/Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h"} %line{141} %argrw{"wrr"}
+	max		vary $tmp41 $const27 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:36
+#     float darkStain = clamp((bigStains * 1.0 + medStains * 0.6 + smallStains * 0.3) * vary, 0.0, 1.0);
+	mul		$tmp42 bigStains $const14 	%filename{"shaders/zone2_skin.osl"} %line{36} %argrw{"wrr"}
+	mul		$tmp43 medStains $const22 	%argrw{"wrr"}
+	add		$tmp44 $tmp42 $tmp43 	%argrw{"wrr"}
+	mul		$tmp45 smallStains $const12 	%argrw{"wrr"}
+	add		$tmp46 $tmp44 $tmp45 	%argrw{"wrr"}
+	mul		$tmp47 $tmp46 vary 	%argrw{"wrr"}
+	functioncall	$const15 76 	%argrw{"r"}
+# /Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h:141
+# float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
+	min		$tmp48 $tmp47 $const14 	%filename{"/Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h"} %line{141} %argrw{"wrr"}
+	max		darkStain $tmp48 $const13 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:39
+#     float t2 = clamp((Pw[1] - (-2.5)) / (0.558 - (-2.5)), 0.0, 1.0);
+	compref		$tmp49 Pw $const17 	%filename{"shaders/zone2_skin.osl"} %line{39} %argrw{"wrr"}
+	sub		$tmp50 $tmp49 $const28 	%argrw{"wrr"}
+	div		$tmp51 $tmp50 $const29 	%argrw{"wrr"}
+	functioncall	$const15 82 	%argrw{"r"}
+# /Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h:141
+# float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
+	min		$tmp52 $tmp51 $const14 	%filename{"/Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h"} %line{141} %argrw{"wrr"}
+	max		t2 $tmp52 $const13 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:40
+#     float topEdge2 = clamp((t2 - 0.75) * 8.0, 0.0, 1.0);
+	sub		$tmp53 t2 $const30 	%filename{"shaders/zone2_skin.osl"} %line{40} %argrw{"wrr"}
+	mul		$tmp54 $tmp53 $const31 	%argrw{"wrr"}
+	functioncall	$const15 87 	%argrw{"r"}
+# /Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h:141
+# float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
+	min		$tmp55 $tmp54 $const14 	%filename{"/Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h"} %line{141} %argrw{"wrr"}
+	max		topEdge2 $tmp55 $const13 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:43
+#     float streak = sin(ang * 800.0) * 0.5 + 0.5;
+	mul		$tmp57 ang $const32 	%filename{"shaders/zone2_skin.osl"} %line{43} %argrw{"wrr"}
+	sin		$tmp56 $tmp57 	%argrw{"wr"}
+	mul		$tmp58 $tmp56 $const10 	%argrw{"wrr"}
+	add		streak $tmp58 $const10 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:44
+#     streak += sin(ang * 548.0) * 0.3;
+	mul		$tmp60 ang $const33 	%line{44} %argrw{"wrr"}
+	sin		$tmp59 $tmp60 	%argrw{"wr"}
+	mul		$tmp61 $tmp59 $const12 	%argrw{"wrr"}
+	add		streak streak $tmp61 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:45
+#     streak *= noise("perlin", point(ang * 5.0, Pw[1] * 2.0, radius)) * 0.6 + 0.5;
+	mul		$tmp64 ang $const19 	%line{45} %argrw{"wrr"}
+	compref		$tmp65 Pw $const17 	%argrw{"wrr"}
+	mul		$tmp66 $tmp65 $const1 	%argrw{"wrr"}
+	point		$tmp63 $tmp64 $tmp66 radius 	%argrw{"wrrr"}
+	noise		$tmp62 $const25 $tmp63 	%argrw{"wrr"}
+	mul		$tmp67 $tmp62 $const22 	%argrw{"wrr"}
+	add		$tmp68 $tmp67 $const10 	%argrw{"wrr"}
+	mul		streak streak $tmp68 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:46
+#     streak = clamp(streak, 0.0, 1.0);
+	functioncall	$const15 106 	%line{46} %argrw{"r"}
+# /Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h:141
+# float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
+	min		$tmp69 streak $const14 	%filename{"/Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h"} %line{141} %argrw{"wrr"}
+	max		streak $tmp69 $const13 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:48
+#     float darkPatch = clamp(darkStain + streak * topEdge2 * 0.4, 0.0, 1.0);
+	mul		$tmp70 streak topEdge2 	%filename{"shaders/zone2_skin.osl"} %line{48} %argrw{"wrr"}
+	mul		$tmp71 $tmp70 $const34 	%argrw{"wrr"}
+	add		$tmp72 darkStain $tmp71 	%argrw{"wrr"}
+	functioncall	$const15 112 	%argrw{"r"}
+# /Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h:141
+# float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
+	min		$tmp73 $tmp72 $const14 	%filename{"/Applications/Pixar/RenderManProServer-27.2/lib/osl/include/stdosl.h"} %line{141} %argrw{"wrr"}
+	max		darkPatch $tmp73 $const13 	%argrw{"wrr"}
+# shaders/zone2_skin.osl:50
+#     resultSpecular = mix(color(0.45, 0.38, 0.18), color(0.12, 0.10, 0.04), darkPatch);
+	mix		resultSpecular $const35 $const36 darkPatch 	%filename{"shaders/zone2_skin.osl"} %line{50} %argrw{"wrrr"}
 	end

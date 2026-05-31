@@ -255,23 +255,8 @@ def make_vase(ri, x, y, z, scale=1.0):
     ri.AttributeBegin()
     ri.Translate(x, y, z)
     ri.Scale(S, S, S)
-    """
-    ri.Bxdf(
-        "PxrSurface",
-        "vase_surface",
-        {
-            "color diffuseColor": [0.02, 0.015, 0.005],
-            "float diffuseGain": [0.05],
-            "color specularFaceColor": [0.85, 0.68, 0.28],
-            "color specularEdgeColor": [0.95, 0.80, 0.40],
-            "float specularRoughness": [0.35],
-            "color specularIor": [1.80, 1.80, 1.80],
-            "int specularFresnelMode": [0],
-        },
-    )
-    """
 
-    ri.ShadingRate(2.0)
+    ri.ShadingRate(0.2)  # 2.0 - 0.2
 
     for i in range(len(profile) - 1):
         r1, y1 = profile[i]
@@ -282,6 +267,7 @@ def make_vase(ri, x, y, z, scale=1.0):
         ri.AttributeBegin()
 
         if i < 2:
+            ri.Pattern("zone1_skin", "z1_out", {})
             # Zone 1 — base
             ri.Bxdf(
                 "PxrSurface",
@@ -289,9 +275,9 @@ def make_vase(ri, x, y, z, scale=1.0):
                 {
                     "color diffuseColor": [0.02, 0.015, 0.005],
                     "float diffuseGain": [0.05],
-                    "color specularFaceColor": [0.85, 0.68, 0.28],
-                    "color specularEdgeColor": [0.95, 0.80, 0.40],
-                    "float specularRoughness": [0.40],
+                    "reference color specularFaceColor": ["z1_out:resultSpecular"],
+                    "color specularEdgeColor": [0.55, 0.45, 0.22],
+                    "float specularRoughness": [0.30],
                     "color specularIor": [1.80, 1.80, 1.80],
                     "int specularFresnelMode": [0],
                 },
@@ -301,9 +287,10 @@ def make_vase(ri, x, y, z, scale=1.0):
             # Zone 2 - lower belly
             ri.Attribute(
                 "displacementbound",
-                {"float sphere": [0.015], "string coordinatesystem": ["object"]},
+                {"float sphere": [0.002], "string coordinatesystem": ["object"]},
             )
-            ri.Pattern("zone2_skin", "z2_out", {})
+            ri.Pattern("zone2_skin", "z2_out", {"float grooveAmp": [0.0025]})
+
             ri.Displace(
                 "PxrDisplace",
                 "z2_disp",
@@ -312,14 +299,15 @@ def make_vase(ri, x, y, z, scale=1.0):
                     "reference vector dispVector": ["z2_out:dPdisp"],
                 },
             )
+
             ri.Bxdf(
                 "PxrSurface",
                 "zone2",
                 {
                     "color diffuseColor": [0.03, 0.02, 0.005],
                     "float diffuseGain": [0.08],
-                    "color specularFaceColor": [0.78, 0.62, 0.24],
-                    "color specularEdgeColor": [0.90, 0.74, 0.34],
+                    "reference color specularFaceColor": ["z2_out:resultSpecular"],
+                    "color specularEdgeColor": [0.55, 0.45, 0.22],
                     "float specularRoughness": [0.45],
                     "color specularIor": [1.80, 1.80, 1.80],
                     "int specularFresnelMode": [0],
@@ -327,16 +315,31 @@ def make_vase(ri, x, y, z, scale=1.0):
             )
 
         elif i < 68:
-            # Zone 3 — goldish ring
+            # Zone 3 — horizontal lathe grooves
+            ri.Attribute(
+                "displacementbound",
+                {"float sphere": [0.015], "string coordinatesystem": ["object"]},
+            )
+            ri.Pattern("zone3_skin", "z3_out", {"float grooveAmp": [0.0005]})
+
+            ri.Displace(
+                "PxrDisplace",
+                "z3_disp",
+                {
+                    "float dispAmount": [1.0],
+                    "reference vector dispVector": ["z3_out:dPdisp"],
+                },
+            )
+
             ri.Bxdf(
                 "PxrSurface",
                 "zone3",
                 {
                     "color diffuseColor": [0.02, 0.015, 0.005],
                     "float diffuseGain": [0.04],
-                    "color specularFaceColor": [0.92, 0.76, 0.32],
-                    "color specularEdgeColor": [0.98, 0.88, 0.48],
-                    "float specularRoughness": [0.20],
+                    "reference color specularFaceColor": ["z3_out:resultSpecular"],
+                    "color specularEdgeColor": [0.55, 0.45, 0.22],
+                    "float specularRoughness": [0.40],
                     "color specularIor": [1.80, 1.80, 1.80],
                     "int specularFresnelMode": [0],
                 },
@@ -349,14 +352,40 @@ def make_vase(ri, x, y, z, scale=1.0):
                 "textures",
                 "TEXTURE_SYMBOLS_ALBEDO_2.tex",
             )
-            ri.Pattern("zone4_skin", "z4_out", {"string texturefile": [tex_path]})
+            disp_path = os.path.join(
+                os.path.dirname(os.path.abspath(__file__)),
+                "textures",
+                "TEXTURE_SYMBOLS_DISP.tex",
+            )
+            ri.Attribute(
+                "displacementbound",
+                {"float sphere": [0.015], "string coordinatesystem": ["object"]},
+            )
+            ri.Pattern(
+                "zone4_skin",
+                "z4_out",
+                {
+                    "string texturefile": [tex_path],
+                    "string dispfile": [disp_path],
+                },
+            )
+
+            ri.Displace(
+                "PxrDisplace",
+                "z4_disp",
+                {
+                    "float dispAmount": [1.0],
+                    "reference vector dispVector": ["z4_out:dPdisp"],
+                },
+            )
+
             ri.Bxdf(
                 "PxrSurface",
                 "zone4",
                 {
                     "reference color diffuseColor": ["z4_out:resultRGB"],
                     "float diffuseGain": [0.15],
-                    "color specularFaceColor": [0.65, 0.52, 0.20],
+                    "reference color specularFaceColor": ["z4_out:resultSpecular"],
                     "color specularEdgeColor": [0.80, 0.65, 0.28],
                     "reference float specularRoughness": ["z4_out:resultRough"],
                     "color specularIor": [1.80, 1.80, 1.80],
@@ -366,15 +395,31 @@ def make_vase(ri, x, y, z, scale=1.0):
 
         elif i < 167:
             # Zone 5 — neck
+            ri.Attribute(
+                "displacementbound",
+                {"float sphere": [0.002], "string coordinatesystem": ["object"]},
+            )
+            ri.Pattern("zone5_skin", "z5_out", {"float grooveAmp": [0.003]})
+
+            ri.Displace(
+                "PxrDisplace",
+                "z5_disp",
+                {
+                    "float dispAmount": [1.0],
+                    "reference vector dispVector": ["z5_out:dPdisp"],
+                },
+            )
+
+            ri.ShadingRate(0.2)  # 2.0 - 0.2
             ri.Bxdf(
                 "PxrSurface",
                 "zone5",
                 {
                     "color diffuseColor": [0.02, 0.015, 0.005],
                     "float diffuseGain": [0.05],
-                    "color specularFaceColor": [0.88, 0.72, 0.30],
-                    "color specularEdgeColor": [0.96, 0.82, 0.42],
-                    "float specularRoughness": [0.30],
+                    "reference color specularFaceColor": ["z5_out:resultSpecular"],
+                    "color specularEdgeColor": [0.55, 0.45, 0.22],
+                    "float specularRoughness": [0.60],
                     "color specularIor": [1.80, 1.80, 1.80],
                     "int specularFresnelMode": [0],
                 },
@@ -382,15 +427,16 @@ def make_vase(ri, x, y, z, scale=1.0):
 
         else:
             # Zone 6 — inner rim
+            ri.Pattern("zone6_skin", "z6_out", {})
             ri.Bxdf(
                 "PxrSurface",
                 "zone6",
                 {
                     "color diffuseColor": [0.04, 0.03, 0.008],
                     "float diffuseGain": [0.10],
-                    "color specularFaceColor": [0.70, 0.56, 0.22],
+                    "reference color specularFaceColor": ["z6_out:resultSpecular"],
                     "color specularEdgeColor": [0.82, 0.68, 0.30],
-                    "float specularRoughness": [0.50],
+                    "float specularRoughness": [0.40],
                     "color specularIor": [1.80, 1.80, 1.80],
                     "int specularFresnelMode": [0],
                 },
@@ -412,28 +458,86 @@ def make_vase(ri, x, y, z, scale=1.0):
     ri.AttributeEnd()
 
 
-# ── Ground plane
+# ── Surrondings
 
 
 def make_ground_plane(ri):
+    albedo_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        "textures",
+        "TEXTURE_FLOOR_WOOD_ALBEDO.tex",
+    )
+    rough_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        "textures",
+        "TEXTURE_FLOOR_WOOD_ROUG.tex",
+    )
+
     ri.AttributeBegin()
-    ri.Bxdf("PxrDiffuse", "ground_material", {"color diffuseColor": [0.45, 0.28, 0.12]})
+    ri.Pattern(
+        "ground_wood",
+        "gw_out",
+        {
+            "string albedofile": [albedo_path],
+            "string roughfile": [rough_path],
+            "float tileScale": [1.0],
+        },
+    )
+    ri.Bxdf(
+        "PxrSurface",
+        "ground_material",
+        {
+            "reference color diffuseColor": ["gw_out:resultRGB"],
+            "float diffuseGain": [0.6],
+            "color specularFaceColor": [0.20, 0.14, 0.08],
+            "color specularEdgeColor": [0.18, 0.15, 0.12],
+            "reference float specularRoughness": ["gw_out:resultRough"],
+            "color specularIor": [1.50, 1.50, 1.50],
+            "int specularFresnelMode": [0],
+        },
+    )
+    ri.Rotate(-25, 0, 1, 0)
     ri.Patch(
         "bilinear",
         {
             "P": [
                 -30,
                 GROUND_Y,
-                -30,
-                30,
-                GROUND_Y,
-                -30,
-                -30,
-                GROUND_Y,
                 30,
                 30,
                 GROUND_Y,
                 30,
+                -30,
+                GROUND_Y,
+                -30,
+                30,
+                GROUND_Y,
+                -30,
+            ]
+        },
+    )
+    ri.AttributeEnd()
+
+
+def make_back_wall(ri):
+    ri.AttributeBegin()
+    ri.Bxdf("PxrDiffuse", "wall_mat", {"color diffuseColor": [0.85, 0.82, 0.78]})
+    ri.Patch(
+        "bilinear",
+        {
+            "P": [
+                -30,
+                GROUND_Y,
+                20,
+                30,
+                GROUND_Y,
+                20,
+                -30,
+                20,
+                20,
+                30,
+                20,
+                20,
             ]
         },
     )
@@ -456,3 +560,16 @@ def place_showcase(ri):
     g = GROUND_Y
 
     make_vase(ri, x=0, y=GROUND_Y, z=0)
+
+
+# ── Helpers
+
+
+def AimZ(ri, direction):
+    dx, dy, dz = direction
+    length = math.sqrt(dx * dx + dy * dy + dz * dz)
+    dx, dy, dz = dx / length, dy / length, dz / length
+    yaw = math.degrees(math.atan2(dx, dz))
+    pitch = math.degrees(math.asin(-dy))
+    ri.Rotate(yaw, 0, 1, 0)
+    ri.Rotate(pitch, 1, 0, 0)

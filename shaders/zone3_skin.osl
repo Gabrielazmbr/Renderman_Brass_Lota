@@ -1,0 +1,35 @@
+shader zone3_skin(
+    float grooveAmp = 0.003,
+    output vector dPdisp = 0,
+    output color resultSpecular = 0
+)
+{
+    point Pw = transform("world", P);
+    float h = Pw[1];
+
+    float ridge = 0.0;
+    ridge += sin(h * 180.0) * 1.00;
+    ridge += sin(h * 320.0) * 0.50;
+    ridge += sin(h * 730.0) * 0.25;
+
+    dPdisp = ridge * grooveAmp * N;
+
+    // ── Fine grain
+        float grain = 0.0;
+        grain += noise("perlin", Pw * 40.0) * 0.50;
+        grain += noise("perlin", Pw * 100.0) * 0.50;
+        grain = clamp(grain, 0.0, 1.0);
+
+    // ── Large oxidation stains
+    float stain = 0.0;
+    //stain += noise("perlin", Pw * 0.5) * 1.00;
+    stain += noise("perlin", Pw * 2.0) * 0.60;
+    stain += noise("perlin", Pw * 4.0) * 0.30;
+    stain += noise("perlin", Pw * 7.0) * 0.30;
+    stain += noise("perlin", Pw * 15.0) * 0.30;
+    stain = clamp(stain, 0.0, 1.0);
+    float darkStain = clamp((stain - 0.1) * 1.5, 0.0, 1.0);
+    float darkPatch = clamp(grain * 0.5 + darkStain, 0.0, 1.0);
+
+        resultSpecular = mix(color(0.45, 0.38, 0.18), color(0.24, 0.20, 0.08), darkPatch);
+}

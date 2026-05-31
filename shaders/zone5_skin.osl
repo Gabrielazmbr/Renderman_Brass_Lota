@@ -1,0 +1,59 @@
+shader zone5_skin(
+    float grooveAmp = 0.006,
+    output vector dPdisp = 0,
+    output color resultSpecular = 0
+)
+{
+    point Pw = transform("world", P);
+    float h = Pw[1];
+    float t = clamp((h - 3.00) / (5.45 - 3.00), 0.0, 1.0);
+    // ── Lines
+    float lines[8] = {0.08, 0.12, 0.25, 0.38, 0.50, 0.62, 0.74, 0.88};
+    float strengths[8] = {0.40, 0.30, 0.10, 0.20, 0.10, 0.09, 0.08, 0.07};
+    float groove = 0.0;
+    for (int i = 0; i < 8; i++) {
+        float dist = abs(t - lines[i]);
+        groove += strengths[i] * exp(-dist * dist * 60000.0);
+    }
+    // ── Fine grain
+    float grain = 0.0;
+    grain += noise("perlin", Pw * 40.0) * 0.50;
+    grain += noise("perlin", Pw * 100.0) * 0.50;
+    grain = clamp(grain, 0.0, 1.0);
+    // ── Cylindrical coords
+    float angle = atan2(Pw[2], Pw[0]) / M_PI;
+    float radius = sqrt(Pw[0]*Pw[0] + Pw[2]*Pw[2]);
+    point Pcyl = point(angle * 4.0, Pw[1] * 2.0, radius);
+    // ── Hash stains
+    float cell1 = noise("hash", Pcyl * 2.0);
+    float cell2 = noise("hash", Pcyl * 5.0);
+    float cell3 = noise("hash", Pcyl * 10.0);
+    float bigStains   = clamp((cell1 - 0.55) * 4.0, 0.0, 1.0);
+    float medStains   = clamp((cell2 - 0.60) * 3.0, 0.0, 1.0);
+    float smallStains = clamp((cell3 - 0.65) * 2.0, 0.0, 1.0);
+    float vary = noise("perlin", Pw * 3.0);
+    vary = clamp(vary * 1.5, 0.2, 1.0);
+    float darkStain = clamp((bigStains * 1.0 + medStains * 0.6 + smallStains * 0.3) * vary, 0.0, 1.0);
+    // ── Perlin stains on top
+    float stain = 0.0;
+    stain += noise("perlin", Pw * 0.5) * 1.00;
+    stain += noise("perlin", Pw * 2.0) * 0.60;
+    stain += noise("perlin", Pw * 4.0) * 0.30;
+    stain += noise("perlin", Pw * 7.0) * 0.30;
+    stain += noise("perlin", Pw * 15.0) * 0.30;
+    stain = clamp(stain, 0.0, 1.0);
+    float perlStain = clamp((stain - 0.01) *2.5, 0.0, 1.0);
+    float darkPatch = clamp(grain * 0.15 + darkStain + perlStain * 0.5, 0.0, 1.0);
+    // ── Bottom border, horizontal streaks
+    float bottomEdge5 = clamp((0.15 - t) * 6.0, 0.0, 1.0);
+    float streak = sin(Pw[1] * 800.0) * 0.5 + 0.5;
+    streak += sin(Pw[1] * 548.0) * 0.3;
+    streak *= noise("perlin", point(angle * 5.0, Pw[1] * 2.0, radius)) * 0.6 + 0.5;
+    streak = clamp(streak, 0.0, 1.0);
+    float borderNoise5 = noise("perlin", Pw * 8.0) * 0.5 + 0.5;
+    darkPatch = clamp(grain * 0.15 + darkStain + perlStain * 0.4, 0.0, 1.0);
+    // ── Outputs
+    dPdisp = -groove * grooveAmp * N;
+    float totalDarken = clamp(groove * 1.5, 0.0, 1.0);
+    resultSpecular = mix(color(0.45, 0.38, 0.18), color(0.12, 0.10, 0.04), clamp(totalDarken + darkPatch, 0.0, 1.0));
+}
