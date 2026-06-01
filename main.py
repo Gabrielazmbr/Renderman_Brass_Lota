@@ -58,15 +58,15 @@ ri.Projection(
     "perspective",
     {
         "fov": 45,
-        "float fStop": [8.0],
+        "float fStop": [4.0],
         "float focalLength": [1.0],
-        "float focalDistance": [15.0],
+        "float focalDistance": [20.0],
     },
 )
-
-ri.Translate(0, -2.5, 15)
+ri.Translate(0, -2.5, 20)
 ri.Rotate(-15, 1, 0, 0)
-ri.Rotate(0, 0, 1, 0)
+ri.Rotate(35, 0, 1, 0)
+ri.Translate(-2, 0, 0)
 
 
 # ── Lights
@@ -82,7 +82,7 @@ ri.Light(
     "PxrDomeLight",
     "domeLight",
     {
-        "float intensity": [0.5],
+        "float intensity": [0.6],  # 0.5
         "string lightColorMap": [
             os.path.join(
                 os.path.dirname(os.path.abspath(__file__)),
@@ -113,8 +113,8 @@ ri.Light(
         "color shadowColor": [0, 0, 0],
         "float coneAngle": [12.0],
         "float coneSoftness": [0.2],
-        "float specular": [0.5],
-        "float diffuse": [1.5],
+        "float specular": [0.3],
+        "float diffuse": [1.0],
         "float intensityNearDist": [50.0],
         "float specularNearDist": [50.0],
     },
@@ -149,6 +149,59 @@ ri.Light(
 ri.AttributeEnd()
 ri.TransformEnd()
 
+# kick
+ri.TransformBegin()
+ri.AttributeBegin()
+ri.Translate(-30, 0, -20)
+To = [0, 3, 0]
+From = [-30, 0, -20]
+direction = list(map(lambda x, y: x - y, To, From))
+AimZ(ri, direction)
+ri.Light(
+    "PxrRectLight",
+    "sideLight",
+    {
+        "float intensity": [10000],
+        "float exposure": [2.0],
+        "color lightColor": [1.0, 0.90, 0.70],
+        "int enableShadows": [1],
+        "color shadowColor": [0, 0, 0],
+        "float coneAngle": [5.0],
+        "float coneSoftness": [0.2],
+        "float specular": [0.2],
+        "float diffuse": [1.5],
+        "float intensityNearDist": [20.0],
+    },
+)
+ri.AttributeEnd()
+ri.TransformEnd()
+
+
+# wall light
+ri.TransformBegin()
+ri.AttributeBegin()
+ri.Translate(-20, 5, -5)
+To = [-5, 8, 20]
+From = [-20, 5, -5]
+direction = list(map(lambda x, y: x - y, To, From))
+AimZ(ri, direction)
+ri.Light(
+    "PxrRectLight",
+    "wallLight",
+    {
+        "float intensity": [3000],
+        "float exposure": [1.0],
+        "color lightColor": [1.0, 0.75, 0.40],
+        "int enableShadows": [0],
+        "float coneAngle": [12.0],
+        "float coneSoftness": [0.3],
+        "float specular": [0.0],
+        "float diffuse": [0.5],
+        "float intensityNearDist": [10.0],
+    },
+)
+ri.AttributeEnd()
+ri.TransformEnd()
 
 # ── Geometry
 

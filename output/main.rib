@@ -5,26 +5,27 @@ Display "output/render.exr" "openexr" "rgba"
 Format 1512 2016 1
 Integrator "PxrPathTracer" "integrator" "int maxIndirectBounces" [16] "int numLightSamples" [4] "int numBxdfSamples" [4]
 Option "Ri" "int Pixelsamples" [256]
-Projection "perspective" "fov" [45] "float fStop" [8] "float focalLength" [1] "float focalDistance" [15]
-Translate 0 -2.5 15
+Projection "perspective" "fov" [45] "float fStop" [4] "float focalLength" [1] "float focalDistance" [20]
+Translate 0 -2.5 20
 Rotate -15 1 0 0
-Rotate 0 0 1 0
+Rotate 35 0 1 0
+Translate -2 0 0
 WorldBegin 
 AttributeBegin 
 Bxdf "PxrDiffuse" "wall_mat" "color diffuseColor" [0.850000024 0.819999993 0.779999971]
-Patch "bilinear" "P" [-30 -2.5 20 30 -2.5 20 -30 20 20 30 20 20]
+Patch "bilinear" "P" [-120 -22.5 20 120 -22.5 20 -120 30 20 120 30 20]
 AttributeEnd 
 AttributeBegin 
 Rotate -90 1 0 0
 Rotate 90 0 0 1
-Light "PxrDomeLight" "domeLight" "float intensity" [0.5] "string lightColorMap" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/hdri/INT_AMB_WARM_002.tex"]
+Light "PxrDomeLight" "domeLight" "float intensity" [0.600000024] "string lightColorMap" ["/Users/gabrielazambrano/Desktop/MSC_CAVE/SEMESTER_02/Renderman/FINAL_PROJECT/Renderman_Brass_Lota/hdri/INT_AMB_WARM_002.tex"]
 AttributeEnd 
 TransformBegin 
 AttributeBegin 
 Translate -20 25 15
 Rotate 126.469231 0 1 0
 Rotate 43.8759956 1 0 0
-Light "PxrRectLight" "keyLight" "float intensity" [10000] "float exposure" [1] "color lightColor" [1 0.899999976 0.699999988] "int enableShadows" [1] "color shadowColor" [0 0 0] "float coneAngle" [12] "float coneSoftness" [0.200000003] "float specular" [0.5] "float diffuse" [1.5] 
+Light "PxrRectLight" "keyLight" "float intensity" [10000] "float exposure" [1] "color lightColor" [1 0.899999976 0.699999988] "int enableShadows" [1] "color shadowColor" [0 0 0] "float coneAngle" [12] "float coneSoftness" [0.200000003] "float specular" [0.300000012] "float diffuse" [1] 
 "float intensityNearDist" [50] "float specularNearDist" [50]
 AttributeEnd 
 TransformEnd 
@@ -35,6 +36,23 @@ Rotate 120.963753 0 1 0
 Rotate 74.1223068 1 0 0
 Light "PxrRectLight" "keyLight" "float intensity" [20000] "float exposure" [2] "color lightColor" [1 0.899999976 0.699999988] "int enableShadows" [1] "color shadowColor" [0 0 0] "float coneAngle" [5] "float specular" [0.5] "float diffuse" [1.5] "float coneSoftness" [0.200000003] 
 "float intensityNearDist" [5]
+AttributeEnd 
+TransformEnd 
+TransformBegin 
+AttributeBegin 
+Translate -30 0 -20
+Rotate 56.3099327 0 1 0
+Rotate -4.75634098 1 0 0
+Light "PxrRectLight" "sideLight" "float intensity" [10000] "float exposure" [2] "color lightColor" [1 0.899999976 0.699999988] "int enableShadows" [1] "color shadowColor" [0 0 0] "float coneAngle" [5] "float coneSoftness" [0.200000003] "float specular" [0.200000003] "float diffuse" [1.5] 
+"float intensityNearDist" [20]
+AttributeEnd 
+TransformEnd 
+TransformBegin 
+AttributeBegin 
+Translate -20 5 -5
+Rotate 30.9637566 0 1 0
+Rotate -5.87501001 1 0 0
+Light "PxrRectLight" "wallLight" "float intensity" [3000] "float exposure" [1] "color lightColor" [1 0.75 0.400000006] "int enableShadows" [0] "float coneAngle" [12] "float coneSoftness" [0.300000012] "float specular" [0] "float diffuse" [0.5] "float intensityNearDist" [10]
 AttributeEnd 
 TransformEnd 
 AttributeBegin 
