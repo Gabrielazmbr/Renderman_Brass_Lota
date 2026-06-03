@@ -4,6 +4,24 @@ Procedural modelling and rendering of a brass lota (traditional Indian water ves
 
 ---
 
+# Final Result
+
+![Final Render Cam 01](media/CAM_01_CLOSE-UP.png)
+*Final Image Render - Cam #1*
+
+
+![Final Render Cam 02](media/CAM_02_WIDE.png)
+*Final Image Render - Cam #2*
+
+---
+
+# Comparison
+
+![Final Render Comparison](media/CAM_01_REAL_PHOTO.png)
+*Comparison with real object still photo*
+
+---
+
 ## Technical Requirements
 
 | Component | Details |
